@@ -24,7 +24,7 @@ namespace Задание_2.Телефонная_книга
         //Программа разделена на логические методы.
         //Для хранения элементов записной книжки используется Dictionary.
         #endregion
-        static void Main(string[] args)
+        static void Main()
         {
 
         }

@@ -26,8 +26,9 @@ namespace Задание_3.Проверка_повторов
         //Что оценивается
         //В программе в качестве коллекции используется HashSet.
         #endregion
-        static void Main(string[] args)
+        static void Main()
         {
+
         }
     }
 }

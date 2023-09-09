@@ -62,9 +62,9 @@ namespace Задание_1.Работа_с_листом
             {
                 for (int i = 0; i < list.Count; i++)
                 {
-                    Console.Write($"{list[i].ToString()} ");
+                    Console.Write($"{list[i]} ");
                 }
-                Console.WriteLine($"\n\nДлина коллекции: {nums.Count}");
+                Console.WriteLine($"\n\nДлина коллекции: {nums.Count}\n");
             }
             #endregion
         }

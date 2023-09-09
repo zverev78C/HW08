@@ -8,7 +8,7 @@ namespace Задание_4.Записная_книжка
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
         }
     }
