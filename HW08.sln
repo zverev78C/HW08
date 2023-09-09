@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Задание 2. Теле�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Задание 3. Проверка повторов", "Задание 3. Проверка повторов\Задание 3. Проверка повторов.csproj", "{0F2F8677-49EF-4EC8-9612-80729DA7260D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Задание 4. Записная книжка", "Задание 4. Записная книжка\Задание 4. Записная книжка.csproj", "{97F7DB55-60FD-4237-B512-BBD708E6DDC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0F2F8677-49EF-4EC8-9612-80729DA7260D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F2F8677-49EF-4EC8-9612-80729DA7260D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F2F8677-49EF-4EC8-9612-80729DA7260D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97F7DB55-60FD-4237-B512-BBD708E6DDC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97F7DB55-60FD-4237-B512-BBD708E6DDC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97F7DB55-60FD-4237-B512-BBD708E6DDC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97F7DB55-60FD-4237-B512-BBD708E6DDC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
