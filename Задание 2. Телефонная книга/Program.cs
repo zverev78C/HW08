@@ -26,13 +26,41 @@ namespace Задание_2.Телефонная_книга
         #endregion
         static void Main()
         {
-            Dictionary<double,string> phoneBook = new Dictionary<double,string>(); // сама книга 
+            Dictionary<double, string> phoneBook = new Dictionary<double, string>(); // сама книга 
+            bool run = true;
             do
             {
+                Console.WriteLine("\nТелефонная Книга\n\n");
+                Console.WriteLine("Добавить запись:\t1\n" +
+                    "Поиск по номеру:\t2\n" +
+                    "Поиск по имени: \t3\n" +
+                    "Выход: \t\t\t4");
 
-            } while (true);
+                switch (Console.ReadLine())
+                {
+                    case "1": AddNote(); break;
+                    case "2": SearchByNum(); break;
+                    case "3": SearchByName(); break;
+                    case "4": run = false; break;
+                }
+            } while (run);
 
-            phoneBook.Add(+79219842905, "Zverev78");
+
+            void AddNote()
+            {
+                Console.Clear();
+                phoneBook.Add(+79219842905, "Zverev78");
+            }
+
+            void SearchByNum()
+            {
+                Console.Clear();
+            }
+
+            void SearchByName()
+            {
+                Console.Clear();
+            }
 
             Console.ReadKey();
         }
