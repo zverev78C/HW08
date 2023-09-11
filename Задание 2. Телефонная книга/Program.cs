@@ -26,7 +26,15 @@ namespace Задание_2.Телефонная_книга
         #endregion
         static void Main()
         {
+            Dictionary<double,string> phoneBook = new Dictionary<double,string>(); // сама книга 
+            do
+            {
 
+            } while (true);
+
+            phoneBook.Add(+79219842905, "Zverev78");
+
+            Console.ReadKey();
         }
     }
 }
