@@ -32,17 +32,19 @@ namespace Задание_2.Телефонная_книга
             {
                 Console.WriteLine("\nТелефонная Книга\n\n");
                 Console.WriteLine("Добавить запись:\t1\n" +
-                    "Поиск по номеру:\t2\n" +
+                    "Поиск :\t\t\t2\n" +
                     "Поиск по имени: \t3\n" +
-                    "Выход: \t\t\tq");
+                    "Выход: \t\t\tQ");
 
                 string str = Console.ReadLine();
                 switch (str.ToLower())
                 {
                     case "1": AddNote(); break;
-                    case "2": SearchByNum(); break;
+                    case "2": Search(); break;
                     case "3": SearchByName(); break;
+                    case "й":
                     case "q": run = false; break;
+                    default: Console.WriteLine("Не верный выбор! Нажмите любую кнопку. (кроме reset и power)"); Console.ReadKey(); Console.Clear(); break;
                 }
             } while (run);
 
@@ -53,9 +55,16 @@ namespace Задание_2.Телефонная_книга
                 phoneBook.Add(79219842905, "Zverev78");
             }
 
-            void SearchByNum()
+            void Search()
             {
                 Console.Clear();
+                Console.WriteLine("Выберите условие поиска:\nПо имени:\t1\nПо Номеру:\t2");
+                string str = Console.ReadLine();
+                switch (str.ToLower())
+                {
+                    case "1": break;
+                    case "2": break;
+                }
             }
 
             void SearchByName()
