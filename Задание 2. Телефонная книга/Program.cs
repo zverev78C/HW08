@@ -32,9 +32,10 @@ namespace Задание_2.Телефонная_книга
             {
                 Console.WriteLine("\nТелефонная Книга\n\n");
                 Console.WriteLine("Добавить запись:\t1\n" +
-                    "Поиск :\t\t\t2\n" +
-                    "Поиск по имени: \t3\n" +
-                    "Выход: \t\t\tQ");
+                    "Поиск:\t\t\t2\n" +
+                    "Поиск по имени:\t3\n" +
+                    "Удаление записи:\t4\n" +
+                    "Выход:\t\t\tQ");
 
                 string str = Console.ReadLine();
                 switch (str.ToLower())
@@ -52,7 +53,9 @@ namespace Задание_2.Телефонная_книга
             void AddNote()
             {
                 Console.Clear();
-                phoneBook.Add(79219842905, "Zverev78");
+                double num = Convert.ToDouble(Console.ReadLine());
+                string name = Console.ReadLine();
+                phoneBook.Add(num, name);
             }
 
             void Search()

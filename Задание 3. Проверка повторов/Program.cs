@@ -28,7 +28,34 @@ namespace Задание_3.Проверка_повторов
         #endregion
         static void Main()
         {
-
+            HashSet<int> list = new HashSet<int>(); //коллекция для вводимых чисел
+            while (true) // цикл обеспечивает повторение ввода
+            {
+                Console.WriteLine("Введите целое число:");
+                string str = Console.ReadLine();
+                int num;
+                if (str.ToLower() == "q") { break; } // если введено Q то программа прерывается
+                else
+                {
+                    try // проверка на коректность ввода
+                    {
+                        num = Convert.ToInt32(str);
+                        if (list.Contains(num)) // проверка на наличие числа в коллекции
+                        {
+                            Console.WriteLine("Такое число уже есть в коллекции.");
+                        }
+                        else
+                        {
+                            list.Add(num); // добавление числа в коллекцию
+                            Console.WriteLine("Число добавлено в коллекцию.");
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine("не верный ввод числа. Для выхода нажмите:  q"); // сообщение при не правильногм вводе
+                    }
+                }
+            }
         }
     }
 }
