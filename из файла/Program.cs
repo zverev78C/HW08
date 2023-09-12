@@ -88,7 +88,7 @@ namespace из_файла
         */
         #endregion
 
-        static void Main(string[] args)
+        static void Main()
         {
         }
     }
