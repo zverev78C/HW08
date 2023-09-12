@@ -53,32 +53,38 @@ namespace Задание_2.Телефонная_книга
                 }
             } while (run);
 
-
+            // Метод добавления номера телефона и имени
             void AddNote()
             {
                 Console.Clear();
                 Console.Write("Введите номер телефона:  ");
-                try
+                try //проверка коректности ввода номера 
                 {
-                    double num = Convert.ToDouble(Console.ReadLine());
-                    if (phoneBook.TryGetValue(num, out string name))//(phoneBook.ContainsKey(num))
+                    double num = Convert.ToDouble(Console.ReadLine()); // ввод номера телефон 79219842905
+                    if (num < 10000000000 || num > 99999999999)
                     {
-
-                        Console.WriteLine($"Такой номер существует для {name}");
-                        // phoneBook.TryGetValue(num);
+                        Console.WriteLine("Номер слишком короткий");
                     }
                     else
                     {
-                        Console.Write("Введите имя:   ");
-                        name = Console.ReadLine();
-                        phoneBook.Add(num, name);
+                        if (phoneBook.TryGetValue(num, out string name))// проверка наличия такогог номера в словаре
+                        {
+                            Console.WriteLine($"Такой номер существует для {name}"); // если номер существует выводится собщение
+                        }
+                        else // если такого номера нет то проситввести имя 
+                        {
+                            Console.Write("Введите имя:   ");
+                            name = Console.ReadLine();
+                            phoneBook.Add(num, name); // добавляет новую пару в словарь
+                        }
+                        Console.WriteLine($"{num}");
+                        Console.ReadKey();
                     }
                 }
-                catch (FormatException)
+                catch (FormatException) // если номер введен не коректно то выводится сообщение
                 {
                     Console.WriteLine("Не верный формат телефона");
                 }
-
             }
 
             void Search()
