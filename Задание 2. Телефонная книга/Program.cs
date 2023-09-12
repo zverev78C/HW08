@@ -33,7 +33,7 @@ namespace Задание_2.Телефонная_книга
                 Console.WriteLine("\nТелефонная Книга\n\n");
                 Console.WriteLine("Добавить запись:\t1\n" +
                     "Поиск:\t\t\t2\n" +
-                    "Поиск по имени:\t3\n" +
+                    "Поиск по имени:\t\t3\n" +
                     "Удаление записи:\t4\n" +
                     "Выход:\t\t\tQ");
 
@@ -53,7 +53,9 @@ namespace Задание_2.Телефонная_книга
             void AddNote()
             {
                 Console.Clear();
+                Console.Write("Введите номер телефона:  ");
                 double num = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Введите имя:   ");
                 string name = Console.ReadLine();
                 phoneBook.Add(num, name); // добавить отлов ошибки повторного ввода ключа
             }
