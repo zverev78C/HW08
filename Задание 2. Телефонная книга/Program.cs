@@ -29,8 +29,58 @@ namespace Задание_2.Телефонная_книга
         static void Main()
         {
             var /* Dictionary<double, string> */phoneBook = new Dictionary<double, string>(); // сама книга 
-            bool run = true;
-            do
+
+            AddNote();
+
+            #region Методы 
+
+            void AddNote()
+            {
+                Console.Write("Введите номер телефона:  ");
+                string str = Console.ReadLine();
+                if (str == "")
+                {
+                    MainMenu();
+                }
+                else
+                {
+                    try //проверка коректности ввода номера 
+                    {
+                        double num = Convert.ToDouble(str); // ввод номера телефон 79219842905
+                        if (num < 10000000000 || num > 99999999999)
+                        {
+                            Console.WriteLine("Номер слишком короткий");
+                            Console.ReadKey();
+                            AddNote();
+                        }
+                        else
+                        {
+                            if (phoneBook.TryGetValue(num, out string name))// проверка наличия такогог номера в словаре
+                            {
+                                Console.WriteLine($"Такой номер существует для {name}"); // если номер существует выводится собщение
+                            }
+                            else // если такого номера нет то просит ввести имя 
+                            {
+                                Console.Write("Введите имя:   ");
+                                name = Console.ReadLine();
+                                phoneBook.Add(num, name); // добавляет новую пару в словарь
+                            }
+                            Console.WriteLine($"{num}");
+                            Console.ReadKey();
+                            AddNote();
+                        }
+                    }
+                    catch (FormatException) // если номер введен не коректно то выводится сообщение
+                    {
+                        Console.WriteLine("Не верный формат телефона");
+                        Console.ReadKey();
+                        AddNote();
+                    }
+
+                }
+            }
+
+            void MainMenu()
             {
                 Console.WriteLine("\nТелефонная Книга\n\n");
                 Console.WriteLine("Добавить запись:\t1\n" +
@@ -39,70 +89,27 @@ namespace Задание_2.Телефонная_книга
                     "Удаление записи:\t4\n" +
                     "Выход:\t\t\tQ");
 
-                Console.WriteLine($"\nВсего телефонов в книге: {phoneBook.Count}");
-
                 string str = Console.ReadLine();
                 switch (str.ToLower())
                 {
                     case "1": AddNote(); break;
                     case "2": Search(); break;
-                    case "3": SearchByName(); break;
-                    case "й":
-                    case "q": run = false; break;
+                    //case "3": SearchByName(); break;
+
                     default: Console.WriteLine("Не верный выбор! Нажмите любую кнопку. (кроме reset и power)"); Console.ReadKey(); Console.Clear(); break;
                 }
-            } while (run);
 
-            // Метод добавления номера телефона и имени
-            void AddNote()
-            {
-                Console.Clear();
-                Console.Write("Введите номер телефона:  ");
-                try //проверка коректности ввода номера 
-                {
-                    double num = Convert.ToDouble(Console.ReadLine()); // ввод номера телефон 79219842905
-                    if (num < 10000000000 || num > 99999999999)
-                    {
-                        Console.WriteLine("Номер слишком короткий");
-                    }
-                    else
-                    {
-                        if (phoneBook.TryGetValue(num, out string name))// проверка наличия такогог номера в словаре
-                        {
-                            Console.WriteLine($"Такой номер существует для {name}"); // если номер существует выводится собщение
-                        }
-                        else // если такого номера нет то проситввести имя 
-                        {
-                            Console.Write("Введите имя:   ");
-                            name = Console.ReadLine();
-                            phoneBook.Add(num, name); // добавляет новую пару в словарь
-                        }
-                        Console.WriteLine($"{num}");
-                        Console.ReadKey();
-                    }
-                }
-                catch (FormatException) // если номер введен не коректно то выводится сообщение
-                {
-                    Console.WriteLine("Не верный формат телефона");
-                }
+                Console.WriteLine($"\nВсего телефонов в книге: {phoneBook.Count}");
+                Console.ReadKey();
             }
 
             void Search()
             {
-                Console.Clear();
-                Console.WriteLine("Выберите условие поиска:\nПо имени:\t1\nПо Номеру:\t2");
-                string str = Console.ReadLine();
-                switch (str.ToLower())
-                {
-                    case "1": break;
-                    case "2": break;
-                }
+
             }
 
-            void SearchByName()
-            {
-                Console.Clear();
-            }
+            #endregion
         }
+
     }
 }
