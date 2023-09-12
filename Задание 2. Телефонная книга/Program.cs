@@ -40,7 +40,7 @@ namespace Задание_2.Телефонная_книга
                 string str = Console.ReadLine();
                 if (str == "")
                 {
-                    MainMenu();
+                    Search();
                 }
                 else
                 {
@@ -64,8 +64,8 @@ namespace Задание_2.Телефонная_книга
                                 Console.Write("Введите имя:   ");
                                 name = Console.ReadLine();
                                 phoneBook.Add(num, name); // добавляет новую пару в словарь
+                                Console.WriteLine($"Номер: {num} добавлен для {name}");
                             }
-                            Console.WriteLine($"{num}");
                             Console.ReadKey();
                             AddNote();
                         }
@@ -80,32 +80,31 @@ namespace Задание_2.Телефонная_книга
                 }
             }
 
-            void MainMenu()
-            {
-                Console.WriteLine("\nТелефонная Книга\n\n");
-                Console.WriteLine("Добавить запись:\t1\n" +
-                    "Поиск:\t\t\t2\n" +
-                    "Поиск по имени:\t\t3\n" +
-                    "Удаление записи:\t4\n" +
-                    "Выход:\t\t\tQ");
-
-                string str = Console.ReadLine();
-                switch (str.ToLower())
-                {
-                    case "1": AddNote(); break;
-                    case "2": Search(); break;
-                    //case "3": SearchByName(); break;
-
-                    default: Console.WriteLine("Не верный выбор! Нажмите любую кнопку. (кроме reset и power)"); Console.ReadKey(); Console.Clear(); break;
-                }
-
-                Console.WriteLine($"\nВсего телефонов в книге: {phoneBook.Count}");
-                Console.ReadKey();
-            }
-
             void Search()
             {
-
+                Console.WriteLine("Поиск по номеру телефона.");
+                Console.Write("Введите номер: ");
+                string str = Console.ReadLine();
+                if (str == "") {}
+                else
+                {
+                    double num = Convert.ToDouble(str);
+                    if (phoneBook.TryGetValue(num, out string name))// проверка наличия такого номера в словаре
+                    {
+                        Console.WriteLine($"Этот номер принадлежит: {name}"); // если номер существует выводится собщение
+                        Console.ReadKey();
+                    }
+                    else // если такого номера нет 
+                    {
+                        Console.Write("Такого номера в списке нет.");
+                        Console.ReadKey();
+                        /*
+                        name = Console.ReadLine();
+                        phoneBook.Add(num, name); // добавляет новую пару в словарь
+                        */
+                    }
+                    Search();
+                }
             }
 
             #endregion
