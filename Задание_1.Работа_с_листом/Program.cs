@@ -27,7 +27,7 @@ namespace Задание_1.Работа_с_листом
              */
             #endregion
 
-            List<int> nums = new List<int>();
+            List<int> nums = new List<int>(); // список случайных чисел
             Random rnd = new Random();
 
             for (int i = 0; i < 100; i++) // Заполнение списка случайными числами

@@ -49,13 +49,13 @@ namespace Задание_2.Телефонная_книга
                 }
             } while (run);
 
-
+            
             void AddNote()
             {
                 Console.Clear();
                 double num = Convert.ToDouble(Console.ReadLine());
                 string name = Console.ReadLine();
-                phoneBook.Add(num, name);
+                phoneBook.Add(num, name); // добавить отлов ошибки повторного ввода ключа
             }
 
             void Search()

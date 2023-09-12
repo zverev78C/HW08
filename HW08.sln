@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Задание 3. Пров�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Задание 4. Записная книжка", "Задание 4. Записная книжка\Задание 4. Записная книжка.csproj", "{97F7DB55-60FD-4237-B512-BBD708E6DDC4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "из файла", "из файла\из файла.csproj", "{432741F7-059F-4A96-811E-F7B693689894}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{97F7DB55-60FD-4237-B512-BBD708E6DDC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97F7DB55-60FD-4237-B512-BBD708E6DDC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97F7DB55-60FD-4237-B512-BBD708E6DDC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{432741F7-059F-4A96-811E-F7B693689894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{432741F7-059F-4A96-811E-F7B693689894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{432741F7-059F-4A96-811E-F7B693689894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{432741F7-059F-4A96-811E-F7B693689894}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
