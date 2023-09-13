@@ -110,25 +110,33 @@ namespace из_файла
 
             void MainMenu()
             {
-                Console.WriteLine("100\t Для тестового заполнения.\n" +
-                    "1\t Для редактирования Депортаментов.\n" +
-                    "2\t Для редактирования Сотрудников.\n" +
+                Console.WriteLine("100\t Для тестового заполнения.\n\n" +
+                    "1\t Для создания Депортаментов.\n" +
+                    "2\t Для редактирования Депортаментов.\n" +
+                    "3\t Для удаления Депортаментов.\n\n" +
 
-                    "5\t Для Сортировки сотрудников\n" +
+                    "4\t Для создания нового Сотрудников.\n" +
+                    "5\t Для редактирования Сотрудников.\n" +
+                    "6\t Для удаления Сотрудников.\n" +
+
+                    "7\t Для Сортировки сотрудников\n\n" +
 
                     "8\t Для Сохранения в XML\n" +
                     "9\t Для Сохранения в JSON\n");
                 switch (Console.ReadLine())
                 {
                     case "100": Test(); break;
-                    case "1": break;
-                    case "2": break;
-                    case "3": break;
-                    case "4": break;
-                    case "5": break;
+                    case "1": CreateDept("name"); break;
+                    case "2": EditDept(); break;
+                    case "3": DeleteDept(0); break;
+                    case "4": CreateWorker(); break;
+                    case "5": EditWorker(); break;
+                    case "6": DeleteWorker(); break;
+                    case "7": SortWorkers(); break;
+                    case "8": SaveAtXML(); break;
+                    case "9": SaveAtJson(); break;
                 }
             }
-
 
 
             // метод создания отдела
@@ -153,10 +161,11 @@ namespace из_файла
                     {
                         if (Wrk[i].WorkDept == Deps[itr].DepName)
                         {
-                            Console.WriteLine($"{Wrk[i].WorkID} ");
+                            Console.Write($"{Wrk[i].WorkID}; ");
                         }
                     }
                 }
+                MainMenu();
             }
 
             //метод редактирования отдела
@@ -184,9 +193,21 @@ namespace из_файла
 
 
 
+            void CreateWorker() { }
+
+            void EditWorker() { }
+
+            void DeleteWorker() { }
 
 
 
+            void SaveAtXML() { }
+
+            void SaveAtJson() { }
+
+
+
+            void SortWorkers() { }
 
             // метод для тестового заполнения БД
             void Test()
