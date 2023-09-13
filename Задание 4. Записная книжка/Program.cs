@@ -41,6 +41,23 @@ namespace Задание_4.Записная_книжка
         #endregion
         static void Main()
         {
+            List<string> Persons = new List<string>(6);
+
+
+            void AddPerson()
+            {
+
+                SavePerson(Persons);
+            }
+
+            //метод записи колекции в файл
+            void SavePerson(List<string> people)
+            {
+
+
+                AddPerson();
+            }
+
         }
     }
 }
