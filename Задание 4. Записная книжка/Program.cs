@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Задание_4.Записная_книжка
 {
     internal class Program
     {
-        #region
+        #region  Что нужно сделать 
         /*
-        Что нужно сделать
         Программа спрашивает у пользователя данные о контакте:
 
         ФИО
@@ -33,7 +29,8 @@ namespace Задание_4.Записная_книжка
             </Phones>
         </Person>
         Советы и рекомендации
-        Заполняйте XElement в ходе заполнения данных.Изучите возможности XElement в документации Microsoft.
+        Заполняйте XElement в ходе заполнения данных.
+        Изучите возможности XElement в документации Microsoft.
 
         Что оценивается
         Программа создаёт Xml файл, содержащий все данные о контакте.
@@ -41,37 +38,32 @@ namespace Задание_4.Записная_книжка
         #endregion
         static void Main()
         {
-            List<string> Persons = new List<string>(6);
-            AddPerson();
+            Console.WriteLine("Ведите следующие данные о человеке:");
+            XElement myPerson = new XElement("Person");
+            XElement myAdress = new XElement("Address");
+            XElement myPhone = new XElement("Phones");
 
-            void AddPerson()
-            {
-                Console.Clear();
-                Console.Write("Введите ФИО: ");
-                Persons.Add(Console.ReadLine());
-                Console.Write("Введите улицу: ");
-                Persons.Add(Console.ReadLine());
-                Console.Write("Введите номер дома: ");
-                Persons.Add(Console.ReadLine());
-                Console.Write("Введите номер квартиры: ");
-                Persons.Add(Console.ReadLine());
-                Console.Write("Введите номер мобильного телефона: ");
-                Persons.Add(Console.ReadLine());
-                Console.Write("Введите номер домашнего телефона: ");
-                Persons.Add(Console.ReadLine());
+            Console.Write("ФИО:\t");
+            XAttribute name = new XAttribute("name", Console.ReadLine());
 
-                SavePerson(Persons);
-            }
+            Console.Write("Название улицы:\t");
+            XElement street = new XElement("Street", Console.ReadLine());
+            Console.Write("Номер дома:\t");
+            XElement house = new XElement("HouseNumber", Console.ReadLine());
+            Console.Write("Номер квартиры:\t");
+            XElement flat = new XElement("FlatNumber", Console.ReadLine());
 
-            //метод записи колекции в файл
-            void SavePerson(List<string> people)
-            {
-                Console.WriteLine (Persons.Count);
-                foreach(string person in people) { Console.Write (person); }
-                Console.ReadKey();
-                AddPerson();
-            }
+            Console.Write("Мобильный телефон:\t");
+            XElement mPhone = new XElement("MobilePhone", Console.ReadLine());
+            Console.Write("Домашний телефон:\t");
+            XElement fPhone = new XElement("FlatPhone", Console.ReadLine());
 
+            myPerson.Add(name);
+            myAdress.Add(street, house, flat);
+            myPhone.Add(mPhone, fPhone);
+            myPerson.Add(myAdress, myPhone);
+
+            myPerson.Save("file");
         }
     }
-}
+} 
