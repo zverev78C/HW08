@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace из_файла
 {
@@ -110,7 +111,7 @@ namespace из_файла
 
             void MainMenu()
             {
-                Console.WriteLine("100\t Для тестового заполнения.\n\n" +
+                Console.WriteLine("\n100\t Для тестового заполнения.\n\n" +
                     "1\t Для создания Депортаментов.\n" +
                     "2\t Для редактирования Депортаментов.\n" +
                     "3\t Для удаления Депортаментов.\n\n" +
@@ -123,12 +124,13 @@ namespace из_файла
 
                     "8\t Для Сохранения в XML\n" +
                     "9\t Для Сохранения в JSON\n");
+
                 switch (Console.ReadLine())
                 {
                     case "100": Test(); break;
-                    case "1": CreateDept("name"); break;
+                    case "1": CreateDept(); break;
                     case "2": EditDept(); break;
-                    case "3": DeleteDept(0); break;
+                    case "3": DeleteDept(); break;
                     case "4": CreateWorker(); break;
                     case "5": EditWorker(); break;
                     case "6": DeleteWorker(); break;
@@ -141,27 +143,39 @@ namespace из_файла
 
             // метод создания отдела
             /* проверка наличия такого отдела*/
-            void CreateDept(string name)
+            void CreateDept()
             {
+                Console.Write("Введите название нового отдела: ");
+                string name = Console.ReadLine();
                 Deps.Add(new Department(name, CountWokers(name)));
+                MainMenu();
             }
 
             // метод удаления отдела
             /* Переделать на string аргумент и проверку наличия*/
-            void DeleteDept(int itr)
+            void DeleteDept()
             {
-                if (Deps[itr].WorkerCount == 0)
+                Console.Write("Введите индекс отдела: ");
+                int itr = Int32.Parse(Console.ReadLine());
+                if (itr >= Deps.Count)
                 {
-                    Deps.RemoveAt(itr);
+                    Console.WriteLine($"Отдела с индексом: {itr}, не существует.");
                 }
                 else
                 {
-                    Console.WriteLine($"Невозможно удалить отдел пока в нем работают люди. {Deps[itr].WorkerCount} человек.\n");
-                    for (int i = 0; i < Wrk.Count; i++)
+                    if (Deps[itr].WorkerCount == 0)
                     {
-                        if (Wrk[i].WorkDept == Deps[itr].DepName)
+                        Deps.RemoveAt(itr);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Невозможно удалить отдел пока в нем работают люди. {Deps[itr].WorkerCount} человек.\n");
+                        for (int i = 0; i < Wrk.Count; i++)
                         {
-                            Console.Write($"{Wrk[i].WorkID}; ");
+                            if (Wrk[i].WorkDept == Deps[itr].DepName)
+                            {
+                                Console.Write($"{Wrk[i].WorkID}; ");
+                            }
                         }
                     }
                 }
@@ -169,7 +183,7 @@ namespace из_файла
             }
 
             //метод редактирования отдела
-            void EditDept ()
+            void EditDept()
             {
 
             }
@@ -234,7 +248,7 @@ namespace из_файла
 
                 for (int i = 1; i <= testDept; i++)
                 {
-                    CreateDept($"Отдел {i}");
+                    Deps.Add(new Department($"Отдел {i}", CountWokers($"Отдел {i}")));
                 }
 
 
