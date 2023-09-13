@@ -42,10 +42,23 @@ namespace Задание_4.Записная_книжка
         static void Main()
         {
             List<string> Persons = new List<string>(6);
-
+            AddPerson();
 
             void AddPerson()
             {
+                Console.Clear();
+                Console.Write("Введите ФИО: ");
+                Persons.Add(Console.ReadLine());
+                Console.Write("Введите улицу: ");
+                Persons.Add(Console.ReadLine());
+                Console.Write("Введите номер дома: ");
+                Persons.Add(Console.ReadLine());
+                Console.Write("Введите номер квартиры: ");
+                Persons.Add(Console.ReadLine());
+                Console.Write("Введите номер мобильного телефона: ");
+                Persons.Add(Console.ReadLine());
+                Console.Write("Введите номер домашнего телефона: ");
+                Persons.Add(Console.ReadLine());
 
                 SavePerson(Persons);
             }
@@ -53,8 +66,9 @@ namespace Задание_4.Записная_книжка
             //метод записи колекции в файл
             void SavePerson(List<string> people)
             {
-
-
+                Console.WriteLine (Persons.Count);
+                foreach(string person in people) { Console.Write (person); }
+                Console.ReadKey();
                 AddPerson();
             }
 
