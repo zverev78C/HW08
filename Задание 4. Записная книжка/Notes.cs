@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Задание_4.Записная_книжка
 {
-    internal class Notes
+    class Notes
     {
         /*
         ФИО
@@ -17,11 +17,20 @@ namespace Задание_4.Записная_книжка
         Домашний телефон
         */
         string FIO { get; set; }
-        string street { get; set; }
+        string Street { get; set; }
         string House { get; set; }
-        string flate { get; set; }
-        double mobile { get; set; }
-        double phone { get; set; }
+        string Flate { get; set; }
+        double Mobile { get; set; }
+        double Phone { get; set; }
 
+        public Notes(string fIO, string street, string house, string flate, double mobile, double phone)
+        {
+            FIO = fIO;
+            Street = street;
+            House = house;
+            Flate = flate;
+            Mobile = mobile;
+            Phone = phone;
+        }
     }
 }
