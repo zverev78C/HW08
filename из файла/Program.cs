@@ -206,17 +206,30 @@ namespace из_файла
             }
 
 
-
+            // Метод создания работника
             void CreateWorker()
             {
+                Console.WriteLine("Введите следющую информацию о работнике: ");
+                Console.WriteLine("Имя: ");
+                string firstName = Console.ReadLine();
+                Console.WriteLine("Фамилия: ");
+                string lastName = Console.ReadLine();
+                Console.WriteLine("Возраст: ");
+                int age = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Название Отдела: ");
+                string dept = Console.ReadLine();
+                Console.WriteLine("Зарплата: ");
+                int solary = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Количество проектов: ");
+                int projects = Int32.Parse(Console.ReadLine());
+
                 Wrk.Add(new Workers(Wrk.Count,
-                                    $"Вася_{i}", 
-                                    $"Пупкин_{i}", 
-                                    testWokerAge,
-                                    $"Отдел {rnd.Next(1, 
-                                    testDept + 1)}",
-                                    testSolary, 
-                                    testCountProject));
+                                    firstName,
+                                    lastName,
+                                    age,
+                                    dept,
+                                    solary,
+                                    projects));
             }
 
             void EditWorker() { }
