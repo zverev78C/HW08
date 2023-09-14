@@ -9,13 +9,13 @@ namespace из_файла
     struct Workers
     {
         #region свойства 
-        public int WorkID { get; set; }
-        private string FisrtName { get; set; }
-        private string LastName { get; set; }
-        private int Age { get; set; }
-        public string WorkDept { get; set; }
-        private int Solary { get; set; }
-        private int CountProject { get; set; }
+        public int WorkID { get; set; } // Табельный номер
+        private string FisrtName { get; set; }// Имя
+        private string LastName { get; set; } // Фамилия
+        private int Age { get; set; } // Возраст
+        public string WorkDept { get; set; }// Отдел
+        private int Solary { get; set; } // ЗряПлата
+        private int CountProject { get; set; } // Количество проектов
         #endregion
 
         #region Конструктор 

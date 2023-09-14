@@ -207,7 +207,17 @@ namespace из_файла
 
 
 
-            void CreateWorker() { }
+            void CreateWorker()
+            {
+                Wrk.Add(new Workers(Wrk.Count,
+                                    $"Вася_{i}", 
+                                    $"Пупкин_{i}", 
+                                    testWokerAge,
+                                    $"Отдел {rnd.Next(1, 
+                                    testDept + 1)}",
+                                    testSolary, 
+                                    testCountProject));
+            }
 
             void EditWorker() { }
 
