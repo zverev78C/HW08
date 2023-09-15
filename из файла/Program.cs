@@ -245,26 +245,25 @@ namespace из_файла
                 string age = Console.ReadLine();
                 int tempAge =0;
                 if (age == "") { tempAge = Wrk[id].Age; } else { tempAge = Int32.Parse(age); }
+                Console.WriteLine("Название Отдела: ");
+                string dept = Console.ReadLine();
+                if (dept == "") { dept = Wrk[id].WorkDept; }
+                Console.WriteLine("Зарплата: ");
+                int tempSolary = 0;
+                string solary = Console.ReadLine();
+                if (solary == "") { tempSolary = Wrk[id].Solary; } else { tempSolary = Int32.Parse(solary); }
+                Console.WriteLine("Количество проектов: ");
+                int tempPrj = 0;
+                string projects = Console.ReadLine();
+                if (projects == "") { tempPrj = Wrk[id].CountProject; } else { tempSolary = Int32.Parse(projects); }
 
-
-
-                Workers tempWorker = new Workers (tempID,
+                Workers tempWorker = new Workers(tempID,
                                                   firstName,
                                                   lastName,
                                                   tempAge,
-
-
-
-
-               
-               
-                
-                Console.WriteLine("Название Отдела: ");
-                string dept = Console.ReadLine();
-                Console.WriteLine("Зарплата: ");
-                int solary = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("Количество проектов: ");
-                int projects = Int32.Parse(Console.ReadLine()); 
+                                                  dept,
+                                                  tempSolary,
+                                                  tempPrj);
             }
 
             void DeleteWorker(int id) 
