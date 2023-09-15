@@ -230,11 +230,12 @@ namespace из_файла
                 MainMenu();
             }
 
-            void EditWorker(int id)
+            void EditWorker()
             {
+                Console.WriteLine("Введите ID работника:");
+                int id = Int32.Parse(Console.ReadLine());
                 Console.WriteLine("Введите следющую информацию о работнике: ");
 
-                int tempID = Wrk[id].WorkID;
                 Console.WriteLine($"Существующее Имя: {Wrk[id].FisrtName}.\t Новое имя: ");
                 string firstName = Console.ReadLine();
                 if (firstName == "") { firstName = Wrk[id].FisrtName; }
@@ -243,31 +244,35 @@ namespace из_файла
                 if (lastName == "") { lastName = Wrk[id].LastName; }
                 Console.WriteLine("Возраст: ");
                 string age = Console.ReadLine();
-                int tempAge =0;
+                int tempAge;
                 if (age == "") { tempAge = Wrk[id].Age; } else { tempAge = Int32.Parse(age); }
                 Console.WriteLine("Название Отдела: ");
                 string dept = Console.ReadLine();
                 if (dept == "") { dept = Wrk[id].WorkDept; }
                 Console.WriteLine("Зарплата: ");
-                int tempSolary = 0;
+                int tempSolary;
                 string solary = Console.ReadLine();
                 if (solary == "") { tempSolary = Wrk[id].Solary; } else { tempSolary = Int32.Parse(solary); }
                 Console.WriteLine("Количество проектов: ");
-                int tempPrj = 0;
+                int tempPrj;
                 string projects = Console.ReadLine();
-                if (projects == "") { tempPrj = Wrk[id].CountProject; } else { tempSolary = Int32.Parse(projects); }
+                if (projects == "") { tempPrj = Wrk[id].CountProject; } else { tempPrj = Int32.Parse(projects); }
 
-                Workers tempWorker = new Workers(tempID,
+                Workers tempWorker = new Workers(Wrk[id].WorkID,
                                                   firstName,
                                                   lastName,
                                                   tempAge,
                                                   dept,
                                                   tempSolary,
                                                   tempPrj);
+                Wrk[id] = tempWorker;
+                MainMenu();
             }
 
-            void DeleteWorker(int id) 
+            void DeleteWorker() 
             {
+                Console.WriteLine("Введите ID работника:");
+                int id = Int32.Parse(Console.ReadLine());
                 Wrk.Remove(Wrk[id]);
                 MainMenu();
             }

@@ -12,7 +12,7 @@ namespace из_файла
         public int WorkID { get; set; } // Табельный номер
         public string FisrtName { get; set; }// Имя
         public string LastName { get; set; } // Фамилия
-        public int Age { get; set; } // Возраст
+        public int Age  { get; set; } // Возраст
         public string WorkDept { get; set; }// Отдел
         public int Solary { get; set; } // ЗряПлата
         public int CountProject { get; set; } // Количество проектов
@@ -39,5 +39,8 @@ namespace из_файла
         {
             Console.WriteLine($"Таб.№   Имя     Фамилия    Возраст     Отдел   Зарплата    Проекты ");
         }
+
+
+
     }
 }
