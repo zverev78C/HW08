@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
@@ -232,10 +233,22 @@ namespace из_файла
             void EditWorker(int id)
             {
                 Console.WriteLine("Введите следющую информацию о работнике: ");
-                string nowName = Wrk[id].FisrtName;
+
+                int tempID = Wrk[id].WorkID;
+                Console.WriteLine($"Существующее Имя: {Wrk[id].FisrtName}.\t Новое имя: ");
+                string firstName = Console.ReadLine();
+                if (firstName == "") { firstName = Wrk[id].FisrtName; }
+
+
+
+                Workers tempWorker = new Workers (tempID,
+                                                  firstName,
+
+
+
                 Console.WriteLine($"Существующее Имя: {nowName}.\t Новое имя: ");
                 string firstName = Console.ReadLine();
-                if (firstName != null) { Wrk.Find( ind => ind.FisrtName == firstName).FisrtName= firstName; }
+                if (firstName != null) { Wrk  ; }
                 Console.WriteLine("Фамилия: ");
                 string lastName = Console.ReadLine();
                 Console.WriteLine("Возраст: ");
