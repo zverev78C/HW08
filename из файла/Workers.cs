@@ -14,8 +14,8 @@ namespace из_файла
         public string LastName { get; set; } // Фамилия
         public int Age { get; set; } // Возраст
         public string WorkDept { get; set; }// Отдел
-        private int Solary { get; set; } // ЗряПлата
-        private int CountProject { get; set; } // Количество проектов
+        public int Solary { get; set; } // ЗряПлата
+        public int CountProject { get; set; } // Количество проектов
         #endregion
 
         #region Конструктор 
