@@ -10,7 +10,7 @@ namespace из_файла
     {
         #region свойства 
         public int WorkID { get; set; } // Табельный номер
-        private string FisrtName { get; set; }// Имя
+        public string FisrtName { get; public set; }// Имя
         private string LastName { get; set; } // Фамилия
         private int Age { get; set; } // Возраст
         public string WorkDept { get; set; }// Отдел

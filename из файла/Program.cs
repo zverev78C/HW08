@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace из_файла
 {
-    internal class Program
+    class Program
     {
         #region
         /*
@@ -104,11 +104,9 @@ namespace из_файла
             List<Workers> Wrk = new List<Workers>();
             List<Department> Deps = new List<Department>();
 
-
             MainMenu();
 
             #region методы 
-
             void MainMenu()
             {
                 Console.WriteLine("\n100\t Для тестового заполнения.\n\n" +
@@ -139,7 +137,6 @@ namespace из_файла
                     case "9": SaveAtJson(); break;
                 }
             }
-
 
             // метод создания отдела
             /* проверка наличия такого отдела*/
@@ -197,7 +194,6 @@ namespace из_файла
                     if (!dictionary.ContainsKey($"{Wrk[i].WorkDept}")) dictionary.Add($"{Wrk[i].WorkDept}", 0);
                     dictionary[$"{Wrk[i].WorkDept}"]++;
                 }
-
                 int count;
                 try { count = dictionary[itr]; }
                 catch { count = 0; }
@@ -230,11 +226,33 @@ namespace из_файла
                                     dept,
                                     solary,
                                     projects));
+                MainMenu();
             }
 
-            void EditWorker() { }
+            void EditWorker(int id)
+            {
+                Console.WriteLine("Введите следющую информацию о работнике: ");
+                string nowName = Wrk[id].FisrtName;
+                Console.WriteLine($"Существующее Имя: {nowName}.\t Новое имя: ");
+                string firstName = Console.ReadLine();
+                if (firstName != null) { Wrk[id].FisrtName = firstName; }
+                Console.WriteLine("Фамилия: ");
+                string lastName = Console.ReadLine();
+                Console.WriteLine("Возраст: ");
+                int age = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Название Отдела: ");
+                string dept = Console.ReadLine();
+                Console.WriteLine("Зарплата: ");
+                int solary = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Количество проектов: ");
+                int projects = Int32.Parse(Console.ReadLine()); 
+            }
 
-            void DeleteWorker() { }
+            void DeleteWorker(int id) 
+            {
+                Wrk.Remove(Wrk[id]);
+                MainMenu();
+            }
 
 
 
