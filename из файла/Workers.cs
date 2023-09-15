@@ -11,8 +11,8 @@ namespace из_файла
         #region свойства 
         public int WorkID { get; set; } // Табельный номер
         public string FisrtName { get; set; }// Имя
-        private string LastName { get; set; } // Фамилия
-        private int Age { get; set; } // Возраст
+        public string LastName { get; set; } // Фамилия
+        public int Age { get; set; } // Возраст
         public string WorkDept { get; set; }// Отдел
         private int Solary { get; set; } // ЗряПлата
         private int CountProject { get; set; } // Количество проектов
