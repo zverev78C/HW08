@@ -238,21 +238,27 @@ namespace из_файла
                 Console.WriteLine($"Существующее Имя: {Wrk[id].FisrtName}.\t Новое имя: ");
                 string firstName = Console.ReadLine();
                 if (firstName == "") { firstName = Wrk[id].FisrtName; }
+                Console.WriteLine("Фамилия: ");
+                string lastName = Console.ReadLine();
+                if (lastName == "") { lastName = Wrk[id].LastName; }
+                Console.WriteLine("Возраст: ");
+                string age = Console.ReadLine();
+                int tempAge =0;
+                if (age == "") { tempAge = Wrk[id].Age; } else { tempAge = Int32.Parse(age); }
 
 
 
                 Workers tempWorker = new Workers (tempID,
                                                   firstName,
+                                                  lastName,
+                                                  tempAge,
 
 
 
-                Console.WriteLine($"Существующее Имя: {nowName}.\t Новое имя: ");
-                string firstName = Console.ReadLine();
-                if (firstName != null) { Wrk  ; }
-                Console.WriteLine("Фамилия: ");
-                string lastName = Console.ReadLine();
-                Console.WriteLine("Возраст: ");
-                int age = Int32.Parse(Console.ReadLine());
+
+               
+               
+                
                 Console.WriteLine("Название Отдела: ");
                 string dept = Console.ReadLine();
                 Console.WriteLine("Зарплата: ");
