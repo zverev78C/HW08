@@ -10,7 +10,7 @@ namespace из_файла
     {
         #region свойства 
         public int WorkID { get; set; } // Табельный номер
-        public string FisrtName { get; public set; }// Имя
+        public string FisrtName { get; set; }// Имя
         private string LastName { get; set; } // Фамилия
         private int Age { get; set; } // Возраст
         public string WorkDept { get; set; }// Отдел
@@ -31,5 +31,13 @@ namespace из_файла
             CountProject = countProject;
         }
         #endregion
+
+        public void Print () 
+        { Console.WriteLine($"{WorkID} {FisrtName}  {LastName}  {Age}   {WorkDept}  {Solary}    {CountProject}"); }
+
+        public void Heading()
+        {
+            Console.WriteLine($"Таб.№   Имя     Фамилия    Возраст     Отдел   Зарплата    Проекты ");
+        }
     }
 }

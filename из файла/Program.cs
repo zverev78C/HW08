@@ -235,7 +235,7 @@ namespace из_файла
                 string nowName = Wrk[id].FisrtName;
                 Console.WriteLine($"Существующее Имя: {nowName}.\t Новое имя: ");
                 string firstName = Console.ReadLine();
-                if (firstName != null) { Wrk[id].FisrtName = firstName; }
+                if (firstName != null) { Wrk.Find( ind => ind.FisrtName == firstName).FisrtName= firstName; }
                 Console.WriteLine("Фамилия: ");
                 string lastName = Console.ReadLine();
                 Console.WriteLine("Возраст: ");
