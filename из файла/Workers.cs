@@ -8,6 +8,8 @@ namespace из_файла
 {
     struct Workers
     {
+        private static readonly Program pro = new Program();
+
         #region свойства 
         public int WorkID { get; set; } // Табельный номер
         public string FisrtName { get; set; }// Имя
@@ -40,7 +42,32 @@ namespace из_файла
             Console.WriteLine($"Таб.№   Имя     Фамилия    Возраст     Отдел   Зарплата    Проекты ");
         }
 
+        /// <summary>
+        /// Метод создающий сотрудника
+        /// </summary>
+        /// <param name="count"></param>
+        /// <returns></returns>
+       public Workers CreateWorker(int count)
+        {
+            int workID = count + 1;
+            Console.WriteLine("Введите следющую информацию о работнике: ");
+            Console.WriteLine("Имя: ");
+            string firstName = Console.ReadLine();
+            Console.WriteLine("Фамилия: ");
+            string lastName = Console.ReadLine();
+            Console.WriteLine("Возраст: ");
+            int age = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Название Отдела: ");
+            string dept = Console.ReadLine();
+            Console.WriteLine("Зарплата: ");
+            int solary = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Количество проектов: ");
+            int projects = Int32.Parse(Console.ReadLine());
+            
+            Workers worker = new Workers(workID ,firstName, lastName, age,dept,solary,projects );
 
+            return worker;
+        }
 
     }
 }

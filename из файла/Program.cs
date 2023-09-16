@@ -102,6 +102,9 @@ namespace из_файла
 
         static void Main()
         {
+            Workers work = new Workers();
+            Department dep = new Department();
+
             List<Workers> Wrk = new List<Workers>();
             List<Department> Deps = new List<Department>();
 
@@ -130,7 +133,7 @@ namespace из_файла
                     case "1": CreateDept(); break;
                     case "2": EditDept(); break;
                     case "3": DeleteDept(); break;
-                    case "4": CreateWorker(); break;
+                    case "4": Workers concretWorker = work.CreateWorker(Wrk.Count); Wrk.Add( concretWorker ); break;
                     case "5": EditWorker(); break;
                     case "6": DeleteWorker(); break;
                     case "7": SortWorkers(); break;
@@ -203,32 +206,7 @@ namespace из_файла
             }
 
 
-            // Метод создания работника
-            void CreateWorker()
-            {
-                Console.WriteLine("Введите следющую информацию о работнике: ");
-                Console.WriteLine("Имя: ");
-                string firstName = Console.ReadLine();
-                Console.WriteLine("Фамилия: ");
-                string lastName = Console.ReadLine();
-                Console.WriteLine("Возраст: ");
-                int age = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("Название Отдела: ");
-                string dept = Console.ReadLine();
-                Console.WriteLine("Зарплата: ");
-                int solary = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("Количество проектов: ");
-                int projects = Int32.Parse(Console.ReadLine());
-
-                Wrk.Add(new Workers(Wrk.Count,
-                                    firstName,
-                                    lastName,
-                                    age,
-                                    dept,
-                                    solary,
-                                    projects));
-                MainMenu();
-            }
+         
 
             void EditWorker()
             {
