@@ -3,10 +3,13 @@ using System.Collections.Generic;
 
 namespace из_файла
 {
+    /// <summary>
+    /// Класс сотрудников 
+    /// </summary>
     class Works
     {
-        Foundat Fdt = new Foundat();
-        Delete Dlt = new Delete();
+        Program Fdt = new Program();
+        Department Dlt = new Department();
         private List<Works> workrs = new List<Works>(); // список всех сотрудников
 
         #region свойства 
