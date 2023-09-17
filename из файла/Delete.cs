@@ -15,6 +15,7 @@ namespace из_файла
          Просмотр всех сотрудников      PrintAllWorkers()
          Создание сотрудника            AddWorkers()
          Редактирование сотрудника      EditWorker()
+         Удаление сотрудника            DeleteWorker()
          * 
          * 
          Просмотр отделов               Print()
@@ -332,6 +333,18 @@ namespace из_файла
             }
 
            Console.WriteLine(workrs[id].Print());
+        }
+        /// <summary>
+        /// метод удаления сотрудника из списков
+        /// </summary>
+        public void DeleteWorker()
+        {
+            PrintAllWorkers();
+            Console.WriteLine("Введите ID работника:");
+            int id = Convert.ToInt32(Fdt.InputCheck(true, true));
+            string depName = workrs[id].WorkDept;
+            Dlt.ChangeDepsWorkerDel(depName); // удаление сотрудника из списка отдела
+            workrs.Remove(workrs[id]);
         }
 
         /// <summary>
