@@ -102,15 +102,21 @@ namespace из_файла
 
         static void Main()
         {
-            
-           //Department dep = new Department();
-
             Test test = new Test();
+            Workers work = new Workers();
+            Department dep = new Department();
 
-            
-            List<Department> Deps = new List<Department>();
+
+            List<Workers> Wrk = new List<Workers>();
+            List<Department> LDeps = new List<Department>();
+
 
             MainMenu();
+
+
+
+
+
 
             #region методы 
             void MainMenu()
@@ -132,51 +138,64 @@ namespace из_файла
                 switch (Console.ReadLine())
                 {
                     case "100": /*Test(); break;*/
-                    case "1": CreateDept(); break;
+                    case "1":// сделано
+                        {
+                            Console.WriteLine("Введите название нового отдела: ");
+                            string name = InputCheck(true, false);
+                            Department newDep =  dep.CreateDept(name);
+                            MainMenu();
+                            break;
+                        }
                     case "2": EditDept(); break;
                     case "3": DeleteDept(); break;
-                    case "4": Workers concretWorker = work.CreateWorker(Wrk.Count); Wrk.Add( concretWorker ); break;
+                    case "4":// сделано
+                        {
+                            Workers concretWorker = work.CreateWorker(Wrk.Count);
+                            Wrk.Add(concretWorker);
+                            MainMenu();
+                            break;
+                        }
                     case "5": EditWorker(); break;
-                    case "6": DeleteWorker(); break;
+                    case "6": DeleteWorker(); break; // сделано
                     case "7": SortWorkers(); break;
                     case "8": SaveAtXML(); break;
                     case "9": SaveAtJson(); break;
                 }
             }
 
-            // метод создания отдела
-            /* проверка наличия такого отдела*/
-            void CreateDept()
-            {
-                Department newDep = Department.CreateDept();
-                Deps.Add(newDep);
-                MainMenu();
-            }
+            
 
             // метод удаления отдела
             /* Переделать на string аргумент и проверку наличия*/
             void DeleteDept()
             {
+                for (int i = 0; i < LDeps.Count; i++)
+                {
+                    dep.Title();
+                    dep.Print(i);
+                }
+
                 Console.Write("Введите индекс отдела: ");
-                int itr = Int32.Parse(Console.ReadLine());
-                if (itr >= Deps.Count)
+                string name = InputCheck(true, true); // проверка ввода пользователя
+                int itr = Int32.Parse(name);
+                if (itr >= LDeps.Count) // проверка что такой отдел существует ( не превышает индекс самого большого отдела)
                 {
                     Console.WriteLine($"Отдела с индексом: {itr}, не существует.");
                 }
                 else
                 {
-                    if (Deps[itr].WorkerCount == 0)
+                    if (LDeps[itr].WorkerCount == 0) // проверка что в отиделе нет работников
                     {
-                        Deps.RemoveAt(itr);
+                        LDeps.RemoveAt(itr);
                     }
                     else
                     {
-                        Console.WriteLine($"Невозможно удалить отдел пока в нем работают люди. {Deps[itr].WorkerCount} человек.\n");
+                        Console.WriteLine($"Невозможно удалить отдел пока в нем работают люди. {LDeps[itr].WorkerCount} человек.\n");
                         for (int i = 0; i < Wrk.Count; i++)
                         {
-                            if (Wrk[i].WorkDept == Deps[itr].DepName)
+                            if (Wrk[i].WorkDept == LDeps[itr].DepName)
                             {
-                                Console.Write($"{Wrk[i].WorkID}; ");
+                                Console.Write($"{Wrk[i].WorkID}; ");  // выводит на экран список табельных номеров работников
                             }
                         }
                     }
@@ -191,10 +210,13 @@ namespace из_файла
             }
 
             // метод счетчика количества работников в отделе
-           
 
-         
 
+
+            /// <summary>
+            /// ??????????
+            /// </summary>
+            /// <returns></returns>
             void EditWorker()
             {
                 Console.WriteLine("Введите ID работника:");
@@ -234,13 +256,8 @@ namespace из_файла
                 MainMenu();
             }
 
-            void DeleteWorker() 
-            {
-                Console.WriteLine("Введите ID работника:");
-                int id = Int32.Parse(Console.ReadLine());
-                Wrk.Remove(Wrk[id]);
-                MainMenu();
-            }
+
+           
 
 
 
@@ -252,8 +269,64 @@ namespace из_файла
 
             void SortWorkers() { }
 
-            
+
             #endregion
+
+
+            //Метод подсчета количества работников в отделе
+            int CountWokers(string name)
+            {
+                var dictionary = new Dictionary<string, int>();
+                for (int i = 0; i < Wrk.Count; i++)
+                {
+                    if (!dictionary.ContainsKey($"{Wrk[i].WorkDept}")) dictionary.Add($"{Wrk[i].WorkDept}", 0);
+                    dictionary[$"{Wrk[i].WorkDept}"]++;
+                }
+                int count;
+                try { count = dictionary[name]; }
+                catch { count = 0; }
+
+                return count;
+            }
+
+
+            // метод контроля ввода пользоваьеля
+            string InputCheck(bool noNull, bool num)
+            {
+                string str = Console.ReadLine();
+                if (noNull == true)
+                {
+                    while (str != null)
+                    {
+                        Console.WriteLine("Строка не должна быть пустой.");
+                        str = Console.ReadLine();
+                    }
+                }
+                if (num == true)
+                {
+                    while (str != null)
+                    {
+                        bool result = int.TryParse(str, out int id);
+                        if (result == false)
+                        {
+                            Console.WriteLine("В строке должно быть целое число");
+                            Console.ReadLine();
+                        }
+                        else { break; }
+                    }
+                }
+                return str;
+            }
+
+            // метод удаления работника из списка
+            void DeleteWorker()
+            {
+                Console.WriteLine("Введите ID работника:");
+                string str = InputCheck(true, true);
+                int id = Int32.Parse(str);
+                Wrk.Remove(Wrk[id]);
+                MainMenu();
+            }
         }
     }
 }
