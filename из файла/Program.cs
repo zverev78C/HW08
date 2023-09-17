@@ -102,7 +102,6 @@ namespace из_файла
 
         static void Main()
         {
-            Test test = new Test();
             Workers work = new Workers();
             Department dep = new Department();
 
@@ -174,7 +173,7 @@ namespace из_файла
                 {
                     Console.WriteLine("Введите новое название:");
                     string newName = InputCheck(true, false);
-                    LDeps[itr] = dep.changeName(LDeps[itr], newName);
+                    LDeps[itr] = dep.ChangeName(LDeps[itr], newName);
 
                 }
                 PrintDeps();
@@ -190,25 +189,26 @@ namespace из_файла
                 Console.WriteLine("Введите следющую информацию о работнике: ");
 
                 Console.WriteLine($"Существующее Имя: {Wrk[id].FisrtName}.\t Новое имя: ");
-                string firstName = Console.ReadLine();
+                string firstName = InputCheck(false, false);
                 if (firstName == "") { firstName = Wrk[id].FisrtName; }
                 Console.WriteLine("Фамилия: ");
-                string lastName = Console.ReadLine();
+                string lastName = InputCheck(false, false);
                 if (lastName == "") { lastName = Wrk[id].LastName; }
                 Console.WriteLine("Возраст: ");
-                string age = Console.ReadLine();
+                string age = InputCheck(false, true);
                 int tempAge;
                 if (age == "") { tempAge = Wrk[id].Age; } else { tempAge = Int32.Parse(age); }
                 Console.WriteLine("Название Отдела: ");
-                string dept = Console.ReadLine();
-                if (dept == "") { dept = Wrk[id].WorkDept; }
+                string dept = InputCheck(false, false);
+                string oldDep = "";
+                if (dept == "") { dept = Wrk[id].WorkDept; } else { oldDep = Wrk[id].WorkDept; }
                 Console.WriteLine("Зарплата: ");
                 int tempSolary;
-                string solary = Console.ReadLine();
+                string solary = InputCheck(false, true); 
                 if (solary == "") { tempSolary = Wrk[id].Solary; } else { tempSolary = Int32.Parse(solary); }
                 Console.WriteLine("Количество проектов: ");
                 int tempPrj;
-                string projects = Console.ReadLine();
+                string projects = InputCheck(false, true);
                 if (projects == "") { tempPrj = Wrk[id].CountProject; } else { tempPrj = Int32.Parse(projects); }
 
                 Workers tempWorker = new Workers(Wrk[id].WorkID,
@@ -219,6 +219,8 @@ namespace из_файла
                                                   tempSolary,
                                                   tempPrj);
                 Wrk[id] = tempWorker;
+                if (dept != "") { ChangeDepWorkersCount(dept); ChangeDepWorkersCount(oldDep); }
+                PrintDeps();
                 MainMenu();
             }
 
@@ -234,7 +236,7 @@ namespace из_файла
             //Метод подсчета количества работников в отделе
             int CountWokers(string name)
             {
-                var dictionary = new Dictionary<string, int>();
+                var dictionary = new Dictionary<string, int>(); //создается словарь отделов
                 for (int i = 0; i < Wrk.Count; i++)
                 {
                     if (!dictionary.ContainsKey($"{Wrk[i].WorkDept}")) dictionary.Add($"{Wrk[i].WorkDept}", 0);
@@ -259,11 +261,11 @@ namespace из_файла
                         str = Console.ReadLine();
                     }
                 }
-                if (num == true)
+                if (num == true && noNull == true)
                 {
                     while (true)
                     {
-                        bool result = int.TryParse(str, out int id);
+                        bool result = int.TryParse(str,out int id);
                         if (result == false)
                         {
                             Console.WriteLine("В строке должно быть целое число");
@@ -282,8 +284,24 @@ namespace из_файла
                 Console.WriteLine("Введите ID работника:");
                 string str = InputCheck(true, true);
                 int id = Int32.Parse(str);
+                string depName = Wrk[id].WorkDept;
+                ChangeDepWorkersCount(depName);
                 Wrk.Remove(Wrk[id]);
+
                 MainMenu();
+            }
+
+            void ChangeDepWorkersCount (string depName)
+            {
+                int newCount = CountWokers(depName);
+                for (int i = 0; i < LDeps.Count; i++) 
+                { 
+                    if (depName == LDeps[i].DepName)
+                    {
+                        Department tempDep = new Department( depName = LDeps[i].DepName, newCount );
+                        LDeps[i] = tempDep;
+                    }
+                }
             }
 
             // метод вывод на экран список всех отделов с индексом каждого
@@ -355,6 +373,7 @@ namespace из_файла
                 }
 
                 Console.WriteLine($"\nСоздано {LDeps.Count} Отделов");
+                PrintDeps();
                 Console.WriteLine($"Создано {Wrk.Count} сотрудников\n\n");
                 MainMenu();
             }

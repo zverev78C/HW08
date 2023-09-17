@@ -52,7 +52,7 @@ namespace из_файла
             Console.WriteLine("Индекс\t\tНазвание\tдата создания отдела\tкол-во работников\n ");
         }
     
-        public Department changeName( Department name, string newName) 
+        public Department ChangeName( Department name, string newName) 
         {
         name.DepName = newName;
             return name;
