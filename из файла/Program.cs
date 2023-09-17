@@ -137,7 +137,7 @@ namespace из_файла
 
                 switch (Console.ReadLine())
                 {
-                    case "100": /*Test(); break;*/
+                    case "100": Test(); break;
                     case "1":// сделано
                         {
                             Console.WriteLine("Введите название нового отдела: ");
@@ -181,6 +181,7 @@ namespace из_файла
                 if (itr >= LDeps.Count) // проверка что такой отдел существует ( не превышает индекс самого большого отдела)
                 {
                     Console.WriteLine($"Отдела с индексом: {itr}, не существует.");
+                    MainMenu();
                 }
                 else
                 {
@@ -296,7 +297,7 @@ namespace из_файла
                 string str = Console.ReadLine();
                 if (noNull == true)
                 {
-                    while (str != null)
+                    while (str == "")
                     {
                         Console.WriteLine("Строка не должна быть пустой.");
                         str = Console.ReadLine();
@@ -304,15 +305,16 @@ namespace из_файла
                 }
                 if (num == true)
                 {
-                    while (str != null)
+                    while (true)
                     {
                         bool result = int.TryParse(str, out int id);
                         if (result == false)
                         {
                             Console.WriteLine("В строке должно быть целое число");
                             Console.ReadLine();
+                            
                         }
-                        else { break; }
+                      break; 
                     }
                 }
                 return str;
@@ -325,6 +327,45 @@ namespace из_файла
                 string str = InputCheck(true, true);
                 int id = Int32.Parse(str);
                 Wrk.Remove(Wrk[id]);
+                MainMenu();
+            }
+
+
+
+
+
+            void Test()
+            {
+                Random rnd = new Random();
+
+                Console.WriteLine("\n\nТестовый режим, автоматическое заполнение БД.");
+
+
+                // Тестовое заполнение списка отделов случайным количеством.
+                int testDept = rnd.Next(1, 10);
+
+                // Тестовое заполнение списка сотрудников случайным количеством.
+                int testWokers = rnd.Next(10, 100);
+                int testWokerAge = rnd.Next(20, 63);
+                int testSolary = rnd.Next(30000, 100000);
+                int testCountProject = rnd.Next(0, 5);
+
+                for (int i = 0; i <= testWokers; i++)
+                {
+                    Wrk.Add(new Workers(i + 1, $"Вася_{i}", $"Пупкин_{i}", testWokerAge, $"Отдел {rnd.Next(1, testDept + 1)}", testSolary, testCountProject));
+                }
+
+
+                for (int i = 1; i <= testDept; i++)
+                {
+                    LDeps.Add(new Department($"Отдел {i}", CountWokers($"Отдел {i}")));
+                }
+
+
+                Console.WriteLine($"\nСоздано {LDeps.Count} Отделов");
+                for (int i = 0; i <= LDeps.Count - 1; i++)
+                { Console.WriteLine($"{ LDeps[i].DepName} {LDeps[i].RegDate:D} {LDeps[i].WorkerCount} "); }
+                Console.WriteLine($"Создано {Wrk.Count} сотрудников\n\n");
                 MainMenu();
             }
         }
