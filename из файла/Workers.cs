@@ -8,9 +8,9 @@ namespace из_файла
     /// </summary>
     class Works
     {
-        Program Fdt = new Program();
-        Department Dlt = new Department();
-        private List<Works> workrs = new List<Works>(); // список всех сотрудников
+        readonly Program Fdt = new Program();
+        readonly Department Dlt = new Department();
+        private readonly List<Works> workrs = new List<Works>(); // список всех сотрудников
 
         #region свойства 
         private int WorkID { get; set; } // Табельный номер

@@ -141,7 +141,7 @@ namespace из_файла
             {
                 while (true)
                 {
-                    bool result = int.TryParse(str, out int id);
+                    bool result = int.TryParse(str, out _);
                     if (result == false)
                     {
                         Console.WriteLine("В строке должно быть целое число");
