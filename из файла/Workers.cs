@@ -8,7 +8,6 @@ namespace из_файла
 {
     struct Workers
     {
-        private static readonly Program pro = new Program();
 
         #region свойства 
         public int WorkID { get; set; } // Табельный номер

@@ -102,10 +102,12 @@ namespace из_файла
 
         static void Main()
         {
-            Workers work = new Workers();
-            Department dep = new Department();
+            
+           //Department dep = new Department();
 
-            List<Workers> Wrk = new List<Workers>();
+            Test test = new Test();
+
+            
             List<Department> Deps = new List<Department>();
 
             MainMenu();
@@ -129,7 +131,7 @@ namespace из_файла
 
                 switch (Console.ReadLine())
                 {
-                    case "100": Test(); break;
+                    case "100": /*Test(); break;*/
                     case "1": CreateDept(); break;
                     case "2": EditDept(); break;
                     case "3": DeleteDept(); break;
@@ -146,9 +148,8 @@ namespace из_файла
             /* проверка наличия такого отдела*/
             void CreateDept()
             {
-                Console.Write("Введите название нового отдела: ");
-                string name = Console.ReadLine();
-                Deps.Add(new Department(name, CountWokers(name)));
+                Department newDep = Department.CreateDept();
+                Deps.Add(newDep);
                 MainMenu();
             }
 
@@ -190,21 +191,7 @@ namespace из_файла
             }
 
             // метод счетчика количества работников в отделе
-            int CountWokers(string itr)
-            {
-                var dictionary = new Dictionary<string, int>();
-                for (int i = 0; i < Wrk.Count; i++)
-                {
-                    if (!dictionary.ContainsKey($"{Wrk[i].WorkDept}")) dictionary.Add($"{Wrk[i].WorkDept}", 0);
-                    dictionary[$"{Wrk[i].WorkDept}"]++;
-                }
-                int count;
-                try { count = dictionary[itr]; }
-                catch { count = 0; }
-
-                return count;
-            }
-
+           
 
          
 
@@ -265,41 +252,7 @@ namespace из_файла
 
             void SortWorkers() { }
 
-            // метод для тестового заполнения БД
-            void Test()
-            {
-                Random rnd = new Random();
-
-                Console.WriteLine("\n\nТестовый режим, автоматическое заполнение БД.");
-
-
-                // Тестовое заполнение списка отделов случайным количеством.
-                int testDept = rnd.Next(1, 10);
-
-                // Тестовое заполнение списка сотрудников случайным количеством.
-                int testWokers = rnd.Next(10, 100);
-                int testWokerAge = rnd.Next(20, 63);
-                int testSolary = rnd.Next(30000, 100000);
-                int testCountProject = rnd.Next(0, 5);
-
-                for (int i = 0; i <= testWokers; i++)
-                {
-                    Wrk.Add(new Workers(i + 1, $"Вася_{i}", $"Пупкин_{i}", testWokerAge, $"Отдел {rnd.Next(1, testDept + 1)}", testSolary, testCountProject));
-                }
-
-
-                for (int i = 1; i <= testDept; i++)
-                {
-                    Deps.Add(new Department($"Отдел {i}", CountWokers($"Отдел {i}")));
-                }
-
-
-                Console.WriteLine($"\nСоздано {Deps.Count} Отделов");
-                for (int i = 0; i <= Deps.Count - 1; i++)
-                { Console.WriteLine($"{Deps[i].DepName} {Deps[i].RegDate:D} {Deps[i].WorkerCount} "); }
-                Console.WriteLine($"Создано {Wrk.Count} сотрудников\n\n");
-                MainMenu();
-            }
+            
             #endregion
         }
     }
