@@ -43,13 +43,13 @@ namespace из_файла
 
         public string Print ()
         {
-           return $"{this.DepName}\t{this.RegDate:D}\t\t{this.WorkerCount} ";
+           return $"  {this.DepName}\t\t{this.RegDate:D}\t\t{this.WorkerCount} ";
         }
 
         public void Title ()
         {
             // Console.Clear();
-            Console.WriteLine("Индекс\t\tНазвание\tдата создания отдела\tкол-во работников\n ");
+            Console.WriteLine("Индекс\t   Название\t\tдата создания отдела\t\tкол-во работников\n ");
         }
     
         public Department ChangeName( Department name, string newName) 

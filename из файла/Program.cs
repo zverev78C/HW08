@@ -181,48 +181,7 @@ namespace из_файла
 
 
             }
-
-            void EditWorker()
-            {
-                Console.WriteLine("Введите ID работника:");
-                int id = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("Введите следющую информацию о работнике: ");
-
-                Console.WriteLine($"Существующее Имя: {Wrk[id].FisrtName}.\t Новое имя: ");
-                string firstName = InputCheck(false, false);
-                if (firstName == "") { firstName = Wrk[id].FisrtName; }
-                Console.WriteLine("Фамилия: ");
-                string lastName = InputCheck(false, false);
-                if (lastName == "") { lastName = Wrk[id].LastName; }
-                Console.WriteLine("Возраст: ");
-                string age = InputCheck(false, true);
-                int tempAge;
-                if (age == "") { tempAge = Wrk[id].Age; } else { tempAge = Int32.Parse(age); }
-                Console.WriteLine("Название Отдела: ");
-                string dept = InputCheck(false, false);
-                string oldDep = "";
-                if (dept == "") { dept = Wrk[id].WorkDept; } else { oldDep = Wrk[id].WorkDept; }
-                Console.WriteLine("Зарплата: ");
-                int tempSolary;
-                string solary = InputCheck(false, true); 
-                if (solary == "") { tempSolary = Wrk[id].Solary; } else { tempSolary = Int32.Parse(solary); }
-                Console.WriteLine("Количество проектов: ");
-                int tempPrj;
-                string projects = InputCheck(false, true);
-                if (projects == "") { tempPrj = Wrk[id].CountProject; } else { tempPrj = Int32.Parse(projects); }
-
-                Workers tempWorker = new Workers(Wrk[id].WorkID,
-                                                  firstName,
-                                                  lastName,
-                                                  tempAge,
-                                                  dept,
-                                                  tempSolary,
-                                                  tempPrj);
-                Wrk[id] = tempWorker;
-                if (dept != "") { ChangeDepWorkersCount(dept); ChangeDepWorkersCount(oldDep); }
-                PrintDeps();
-                MainMenu();
-            }
+            
 
             void SaveAtXML() { }
 
@@ -272,7 +231,7 @@ namespace из_файла
                             Console.ReadLine();
 
                         }
-                        break;
+                        else { break; }
                     }
                 }
                 return str;
@@ -310,12 +269,11 @@ namespace из_файла
                 dep.Title();
                 for (int i = 0; i < LDeps.Count; i++)
                 {
-                    Console.WriteLine($"  {i}\t\t {LDeps[i].Print()}");
+                    Console.WriteLine($"  {i}\t{LDeps[i].Print()}");
                 }
             }
 
             // метод удаления отдела
-            /* Переделать на string аргумент и проверку наличия*/
             void DeleteDept()
             {
                 PrintDeps();
@@ -329,7 +287,7 @@ namespace из_файла
                 }
                 else
                 {
-                    if (LDeps[itr].WorkerCount == 0) // проверка что в отиделе нет работников
+                    if (LDeps[itr].WorkerCount == 0) // проверка что в отделе нет работников
                     {
                         LDeps.RemoveAt(itr);
                     }
@@ -345,6 +303,49 @@ namespace из_файла
                         }
                     }
                 }
+                MainMenu();
+            }
+
+            // метод изменения работника
+            void EditWorker()
+            {
+                Console.WriteLine("Введите ID работника:");
+                int id = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Введите следющую информацию о работнике: ");
+
+                Console.WriteLine($"Существующее Имя: {Wrk[id].FisrtName}.\t Новое имя: ");
+                string firstName = InputCheck(false, false);
+                if (firstName == "") { firstName = Wrk[id].FisrtName; }
+                Console.WriteLine("Фамилия: ");
+                string lastName = InputCheck(false, false);
+                if (lastName == "") { lastName = Wrk[id].LastName; }
+                Console.WriteLine("Возраст: ");
+                string age = InputCheck(false, true);
+                int tempAge;
+                if (age == "") { tempAge = Wrk[id].Age; } else { tempAge = Int32.Parse(age); }
+                Console.WriteLine("Название Отдела: ");
+                string dept = InputCheck(false, false);
+                string oldDep = "";
+                if (dept == "") { dept = Wrk[id].WorkDept; } else { oldDep = Wrk[id].WorkDept; }
+                Console.WriteLine("Зарплата: ");
+                int tempSolary;
+                string solary = InputCheck(false, true);
+                if (solary == "") { tempSolary = Wrk[id].Solary; } else { tempSolary = Int32.Parse(solary); }
+                Console.WriteLine("Количество проектов: ");
+                int tempPrj;
+                string projects = InputCheck(false, true);
+                if (projects == "") { tempPrj = Wrk[id].CountProject; } else { tempPrj = Int32.Parse(projects); }
+
+                Workers tempWorker = new Workers(Wrk[id].WorkID,
+                                                  firstName,
+                                                  lastName,
+                                                  tempAge,
+                                                  dept,
+                                                  tempSolary,
+                                                  tempPrj);
+                Wrk[id] = tempWorker;
+                if (dept != "") { ChangeDepWorkersCount(dept); ChangeDepWorkersCount(oldDep); }
+                PrintDeps();
                 MainMenu();
             }
 
