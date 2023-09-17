@@ -106,17 +106,10 @@ namespace из_файла
             Workers work = new Workers();
             Department dep = new Department();
 
-
             List<Workers> Wrk = new List<Workers>();
             List<Department> LDeps = new List<Department>();
 
-
             MainMenu();
-
-
-
-
-
 
             #region методы 
             void MainMenu()
@@ -137,17 +130,19 @@ namespace из_файла
 
                 switch (Console.ReadLine())
                 {
-                    case "100": Test(); break;
+                    case "100":
+                        Console.Clear();
+                        Test(); break;
                     case "1":// сделано
                         {
                             Console.WriteLine("Введите название нового отдела: ");
                             string name = InputCheck(true, false);
-                            Department newDep =  dep.CreateDept(name);
+                            Department newDep = dep.CreateDept(name);
                             MainMenu();
                             break;
                         }
                     case "2": EditDept(); break;
-                    case "3": DeleteDept(); break;
+                    case "3": DeleteDept(); break;// сделано
                     case "4":// сделано
                         {
                             Workers concretWorker = work.CreateWorker(Wrk.Count);
@@ -163,18 +158,10 @@ namespace из_файла
                 }
             }
 
-            
-
-            // метод удаления отдела
-            /* Переделать на string аргумент и проверку наличия*/
-            void DeleteDept()
+            //метод редактирования отдела
+            void EditDept()
             {
-                for (int i = 0; i < LDeps.Count; i++)
-                {
-                    dep.Title();
-                    dep.Print(i);
-                }
-
+                PrintDeps();
                 Console.Write("Введите индекс отдела: ");
                 string name = InputCheck(true, true); // проверка ввода пользователя
                 int itr = Int32.Parse(name);
@@ -185,39 +172,17 @@ namespace из_файла
                 }
                 else
                 {
-                    if (LDeps[itr].WorkerCount == 0) // проверка что в отиделе нет работников
-                    {
-                        LDeps.RemoveAt(itr);
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Невозможно удалить отдел пока в нем работают люди. {LDeps[itr].WorkerCount} человек.\n");
-                        for (int i = 0; i < Wrk.Count; i++)
-                        {
-                            if (Wrk[i].WorkDept == LDeps[itr].DepName)
-                            {
-                                Console.Write($"{Wrk[i].WorkID}; ");  // выводит на экран список табельных номеров работников
-                            }
-                        }
-                    }
+                    Console.WriteLine("Введите новое название:");
+                    string newName = InputCheck(true, false);
+                    LDeps[itr] = dep.changeName(LDeps[itr], newName);
+
                 }
+                PrintDeps();
                 MainMenu();
-            }
 
-            //метод редактирования отдела
-            void EditDept()
-            {
 
             }
 
-            // метод счетчика количества работников в отделе
-
-
-
-            /// <summary>
-            /// ??????????
-            /// </summary>
-            /// <returns></returns>
             void EditWorker()
             {
                 Console.WriteLine("Введите ID работника:");
@@ -257,19 +222,11 @@ namespace из_файла
                 MainMenu();
             }
 
-
-           
-
-
-
             void SaveAtXML() { }
 
             void SaveAtJson() { }
 
-
-
             void SortWorkers() { }
-
 
             #endregion
 
@@ -289,7 +246,6 @@ namespace из_файла
 
                 return count;
             }
-
 
             // метод контроля ввода пользоваьеля
             string InputCheck(bool noNull, bool num)
@@ -312,9 +268,9 @@ namespace из_файла
                         {
                             Console.WriteLine("В строке должно быть целое число");
                             Console.ReadLine();
-                            
+
                         }
-                      break; 
+                        break;
                     }
                 }
                 return str;
@@ -330,16 +286,54 @@ namespace из_файла
                 MainMenu();
             }
 
+            // метод вывод на экран список всех отделов с индексом каждого
+            void PrintDeps()
+            {
+                dep.Title();
+                for (int i = 0; i < LDeps.Count; i++)
+                {
+                    Console.WriteLine($"  {i}\t\t {LDeps[i].Print()}");
+                }
+            }
 
-
-
+            // метод удаления отдела
+            /* Переделать на string аргумент и проверку наличия*/
+            void DeleteDept()
+            {
+                PrintDeps();
+                Console.Write("Введите индекс отдела: ");
+                string name = InputCheck(true, true); // проверка ввода пользователя
+                int itr = Int32.Parse(name);
+                if (itr >= LDeps.Count) // проверка что такой отдел существует ( не превышает индекс самого большого отдела)
+                {
+                    Console.WriteLine($"Отдела с индексом: {itr}, не существует.");
+                    MainMenu();
+                }
+                else
+                {
+                    if (LDeps[itr].WorkerCount == 0) // проверка что в отиделе нет работников
+                    {
+                        LDeps.RemoveAt(itr);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Невозможно удалить отдел пока в нем работают люди. {LDeps[itr].WorkerCount} человек.\n");
+                        for (int i = 0; i < Wrk.Count; i++)
+                        {
+                            if (Wrk[i].WorkDept == LDeps[itr].DepName)
+                            {
+                                Console.Write($"{Wrk[i].WorkID}; ");  // выводит на экран список табельных номеров работников
+                            }
+                        }
+                    }
+                }
+                MainMenu();
+            }
 
             void Test()
             {
                 Random rnd = new Random();
-
                 Console.WriteLine("\n\nТестовый режим, автоматическое заполнение БД.");
-
 
                 // Тестовое заполнение списка отделов случайным количеством.
                 int testDept = rnd.Next(1, 10);
@@ -355,16 +349,12 @@ namespace из_файла
                     Wrk.Add(new Workers(i + 1, $"Вася_{i}", $"Пупкин_{i}", testWokerAge, $"Отдел {rnd.Next(1, testDept + 1)}", testSolary, testCountProject));
                 }
 
-
                 for (int i = 1; i <= testDept; i++)
                 {
                     LDeps.Add(new Department($"Отдел {i}", CountWokers($"Отдел {i}")));
                 }
 
-
                 Console.WriteLine($"\nСоздано {LDeps.Count} Отделов");
-                for (int i = 0; i <= LDeps.Count - 1; i++)
-                { Console.WriteLine($"{ LDeps[i].DepName} {LDeps[i].RegDate:D} {LDeps[i].WorkerCount} "); }
                 Console.WriteLine($"Создано {Wrk.Count} сотрудников\n\n");
                 MainMenu();
             }

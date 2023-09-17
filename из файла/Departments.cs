@@ -41,17 +41,21 @@ namespace из_файла
             return newdep;
         }
 
-        public void Print (int index)
+        public string Print ()
         {
-            Console.WriteLine($"{index}\t{DepName}\t{RegDate:D}\t{WorkerCount} ");
+           return $"{this.DepName}\t{this.RegDate:D}\t\t{this.WorkerCount} ";
         }
 
         public void Title ()
         {
             // Console.Clear();
-            Console.WriteLine("Индекс\tНазвание\tдата создания отдела\tкол-во работников\n ");
+            Console.WriteLine("Индекс\t\tНазвание\tдата создания отдела\tкол-во работников\n ");
         }
     
-
+        public Department changeName( Department name, string newName) 
+        {
+        name.DepName = newName;
+            return name;
+        }
     }
 }
