@@ -192,5 +192,35 @@ namespace из_файла
 
         #endregion
 
+        #region Методы для тестов
+        public void AddWorkersTest(string firstName, string lastName,int age,string workDept,int solary,int projects)
+        {
+            int workID = (workrs.Count == 0 ? 0 : workrs.Count); // проверка на пустой список сотрудников
+            /*Console.Write("Имя сотрудника:  ");
+            string firstName = Fdt.InputCheck(true, false);
+            Console.Write("Фамилия сотрудника:  ");
+            string lastName = Fdt.InputCheck(true, false);
+            Console.Write("Возраст сотрудника:  ");
+            int age = Convert.ToInt32(Fdt.InputCheck(true, true));
+            Console.Write("Отдел сотрудника:  ");
+            string workDept = Fdt.InputCheck(true, false);
+            Console.Write("Зарплата сотрудника:  ");
+            int solary = Convert.ToInt32(Fdt.InputCheck(true, true));
+            Console.Write("Количество проектов сотрудника:  ");
+            int projects = Convert.ToInt32(Fdt.InputCheck(true, true));
+            */
+
+            Works tempWorker = new Works(  WorkID = workID + 1, // Табельный номер нового сотрудника
+                                          FisrtName = firstName, // Имя сотрудника
+                                          LastName = lastName,
+                                          Age = age,
+                                          WorkDept = workDept,
+                                          Solary = solary,
+                                          CountProject = projects );
+            workrs.Add(tempWorker);
+            Dlt.ChangeDepsWorkerAdd(tempWorker, workDept);
+        }
+
+        #endregion
     }
 }

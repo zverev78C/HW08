@@ -102,6 +102,18 @@ namespace из_файла
 
         static void Main()
         {
+            Works Wrk = new Works();
+            Department Dlt = new Department();
+            while(true)
+            {
+                Console.WriteLine("Информационная система!\n\n");
+                Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
+                    "100\tДля тестового заполнения БД\n" +
+                    "1\tДля просмотра всех сотрудников\n" +
+                    "2\tДля просмотра всех отделов" +
+                    "3\tДля сохранения базы данных"
+                    );
+            }
             /*
           Просмотр всех сотрудников      PrintAllWorkers()
           Создание сотрудника            AddWorkers()
@@ -118,14 +130,43 @@ namespace из_файла
           Сохранение в 
            */
 
-            /// <summary>
-            /// Метод контроля ввода данных от пользователя
-            /// </summary>
-            /// <param name="noNull">возможно оставть пустую строку</param>
-            /// <param name="num"> ожидается число Int </param>
-            /// <returns> строку которую при необходимости надо конвертировать в int </returns>
-            
+
+            void Test()
+            {
+                Random rnd = new Random();
+                Console.WriteLine("\n\nТестовый режим, автоматическое заполнение БД.");
+
+                // Тестовое заполнение списка отделов случайным количеством.
+                int testDept = rnd.Next(1, 10);
+
+                // Тестовое заполнение списка сотрудников случайным количеством.
+                int testWokers = rnd.Next(10, 100);
+                int testWokerAge = rnd.Next(20, 63);
+                int testSolary = rnd.Next(30000, 100000);
+                int testCountProject = rnd.Next(0, 5);
+
+                for (int i = 0; i <= testWokers; i++)
+                {
+                    Wrk.AddWorkersTest($"Вася_{i}", $"Пупкин_{i}", testWokerAge, $"Отдел {rnd.Next(1, testDept + 1)}", testSolary, testCountProject);
+                }
+
+                for (int i = 1; i <= testDept; i++)
+                {
+                    Dlt.NewDepartmentTest($"Отдел {i}");
+                }
+
+                Console.WriteLine($"\nСоздано {testDept} Отделов");
+                Dlt.Print();
+                Console.WriteLine($"Создано {testWokers} сотрудников\n\n");
+                Wrk.PrintAllWorkers();
+            }
         }
+        /// <summary>
+        /// Метод контроля ввода данных от пользователя
+        /// </summary>
+        /// <param name="noNull">возможно оставть пустую строку</param>
+        /// <param name="num"> ожидается число Int </param>
+        /// <returns> строку которую при необходимости надо конвертировать в int </returns>
         public string InputCheck(bool noNull, bool num)
         {
             string str = Console.ReadLine();
@@ -153,5 +194,9 @@ namespace из_файла
             }
             return str;
         }
+    }
+    struct test
+    {
+       
     }
 }

@@ -135,5 +135,17 @@ namespace из_файла
             }
         }
         #endregion
+
+        #region Методы для тестов 
+        public void NewDepartmentTest(string name)
+        {
+            //string name = Fdt.InputCheck(true, false);
+            _ = new List<Works>();
+            List<Works> depList = Wrks.DepsList(name);
+
+            Deps.Add(new Department(Name = name, RegDate = DateTime.Now, Works = depList));
+        }
+
+        #endregion
     }
 }
