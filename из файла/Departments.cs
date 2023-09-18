@@ -8,6 +8,7 @@ namespace из_файла
 {
     class Department
     {
+        /*
         Works Wrks = new Works();
         Mech Fdt = new Mech();
         List<Department> Deps = new List<Department>();
@@ -146,6 +147,6 @@ namespace из_файла
             Deps.Add(new Department(Name = name, RegDate = DateTime.Now, Works = depList));
         }
 
-        #endregion
+        #endregion*/
     }
 }

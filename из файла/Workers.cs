@@ -8,6 +8,7 @@ namespace из_файла
     /// </summary>
     class Works
     {
+        
         Mech Fdt = new Mech();
         Department Dlt = new Department();
         private List<Works> workrs = new List<Works>(); // список всех сотрудников
@@ -38,6 +39,13 @@ namespace из_файла
 
         public Works()
         {
+            WorkID = 0;
+            FisrtName = "";
+            LastName = "";
+            Age = 0;
+            WorkDept = "";
+            Solary = 0;
+            CountProject = 0;
         }
 
         #endregion
@@ -196,19 +204,8 @@ namespace из_файла
         public void AddWorkersTest(string firstName, string lastName,int age,string workDept,int solary,int projects)
         {
             int workID = (workrs.Count == 0 ? 0 : workrs.Count); // проверка на пустой список сотрудников
-            /*Console.Write("Имя сотрудника:  ");
-            string firstName = Fdt.InputCheck(true, false);
-            Console.Write("Фамилия сотрудника:  ");
-            string lastName = Fdt.InputCheck(true, false);
-            Console.Write("Возраст сотрудника:  ");
-            int age = Convert.ToInt32(Fdt.InputCheck(true, true));
-            Console.Write("Отдел сотрудника:  ");
-            string workDept = Fdt.InputCheck(true, false);
-            Console.Write("Зарплата сотрудника:  ");
-            int solary = Convert.ToInt32(Fdt.InputCheck(true, true));
-            Console.Write("Количество проектов сотрудника:  ");
-            int projects = Convert.ToInt32(Fdt.InputCheck(true, true));
-            */
+           
+            
 
             Works tempWorker = new Works(  WorkID = workID + 1, // Табельный номер нового сотрудника
                                           FisrtName = firstName, // Имя сотрудника
