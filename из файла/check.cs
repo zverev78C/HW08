@@ -8,8 +8,6 @@ namespace из_файла
 {
     internal class Check
     {
-        Department Dlt = new Department();
-
        public static string InputCheck(bool noNull, bool num)
         {
             string str = Console.ReadLine();

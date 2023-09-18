@@ -8,7 +8,6 @@ namespace из_файла
     /// </summary>
     class Works
     {
-        Check ck = new Check();
        List<Works> workrs = new List<Works>(); // список всех сотрудников
 
         #region свойства 
