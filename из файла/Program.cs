@@ -139,10 +139,11 @@ namespace из_файла
                 string result = Console.ReadLine();
                 switch (result)
                 {
-                    case "1": Wrk.PrintAllWorkers(); break;
-                    case "2": Wrk.AddWorkers(); break;
-                    case "3": Wrk.EditWorker(); break;
-                    case "4": break;
+                    case "1": Wrk.PrintAllWorkers(); break;  //Просмотр всех сотрудников 
+                    case "2": Wrk.AddWorkers(); break;       //Создание сотрудника  
+                    case "3": Wrk.EditWorker(); break;       //Редактирование сотрудника
+                    case "4": Wrk.DeleteWorker(); break;     //Удаление сотрудника
+                    case "5": break;
                     default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
                 }
             }
@@ -160,10 +161,11 @@ namespace из_файла
                 string result = Console.ReadLine();
                 switch (result)
                 {
-                    case "1": Workers(); break;
-                    case "2": Deps(); break;
-                    case "3": SaveBD(); break;
-                    case "4": break;
+                    case "1": Dlt.Print(); break;               // Просмотр отделов 
+                    case "2": Dlt.NewDepartment(); break;       // Создание нового Отдела  
+                    case "3": Dlt.EditDept(); break;            // Редактирование отдела  
+                    case "4": Dlt.DeleteDept(); break;          // Удаление отдела 
+                    case "5": break;
                     default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
                 }
             }
@@ -188,21 +190,7 @@ namespace из_файла
                     default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
                 }
             }
-            /*
-          Просмотр всех сотрудников      Wrk.PrintAllWorkers()
-          Создание сотрудника            Wrk.AddWorkers()
-          Редактирование сотрудника      Wrk.EditWorker()
-          Удаление сотрудника            Wrk.DeleteWorker()
-          * 
-          * 
-          Просмотр отделов               Dlt.Print()
-          Создание нового Отдела         Dlt.NewDepartment()
-          Редактирование отдела          Dlt.EditDept()
-          Удаление отдела                Dlt.DeleteDept()
-          *
-          *
-          Сохранение в 
-           */
+            
 
 
             void Test()
