@@ -183,7 +183,7 @@ namespace из_файла
         /// </summary>
         private void PrintTitle()
         {
-            Console.WriteLine("Таб.номер\t   Имя\t  Фамилия\t Возраст\t Название отдела\t Зарплата\t Количество проектов\n ");
+            Console.WriteLine("Таб.номер\tИмя\t\tФамилия\t\tВозраст\t Название отдела\tЗарплата\tКоличество проектов\n ");
         }
         /// <summary>
         /// Метод возвращающий сотрудника для печати 
@@ -191,7 +191,7 @@ namespace из_файла
         /// <returns></returns>
         private string Print()
         {
-            return $"{this.WorkID}  {this.FisrtName} {this.LastName} {this.Age} {this.WorkDept} {this.Solary} {this.CountProject}";
+            return $"   {this.WorkID}\t\t{this.FisrtName}\t\t{this.LastName}\t{this.Age}\t {this.WorkDept}\t\t{this.Solary}\t\t{this.CountProject}";
         }
 
         #endregion

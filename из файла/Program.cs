@@ -108,7 +108,7 @@ namespace из_файла
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Информационная система!\n\n");
+                Console.WriteLine("\nИнформационная система!\n\n");
                 Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
                     "100\tДля тестового заполнения БД\n" +
                     "1\tДля просмотра всех сотрудников\n" +
@@ -205,14 +205,14 @@ namespace из_файла
 
                 // Тестовое заполнение списка сотрудников случайным количеством.
                 int testWokers = rnd.Next(10, 100);
-                int testWokerAge = rnd.Next(20, 63);
-                int testSolary = rnd.Next(30000, 100000);
-                int testCountProject = rnd.Next(0, 5);
+                //int testWokerAge = rnd.Next(20, 63);
+                //int testSolary = rnd.Next(30000, 100000);
+                //int testCountProject = rnd.Next(0, 5);
                 var Wrk = new Works();
                 var Dlt = new Department();
                 for (int i = 0; i <= testWokers; i++)
                 {
-                    Wrk.AddWorkersTest($"Вася_{i}", $"Пупкин_{i}", testWokerAge, $"Отдел {rnd.Next(1, testDept + 1)}", testSolary, testCountProject);
+                    Wrk.AddWorkersTest($"Вася_{i}", $"Пупкин_{i}", rnd.Next(20, 63), $"Отдел {rnd.Next(1, testDept + 1)}", rnd.Next(30000, 100000), rnd.Next(0, 5));
                 }
 
                 for (int i = 1; i <= testDept; i++)
@@ -220,9 +220,9 @@ namespace из_файла
                     Dlt.NewDepartmentTest($"Отдел {i}");
                 }
 
-                Console.WriteLine($"\nСоздано {testDept} Отделов");
+                Console.WriteLine($"\nСоздано {testDept} Отделов\n");
                 Dlt.Print();
-                Console.WriteLine($"Создано {testWokers} сотрудников\n\n");
+                Console.WriteLine($"\nСоздано {testWokers} сотрудников\n");
                 Wrk.PrintAllWorkers();
             }
 
