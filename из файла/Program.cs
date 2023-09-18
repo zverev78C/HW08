@@ -126,38 +126,85 @@ namespace из_файла
                 }
             }
 
-            void Workers ()
+            void Workers () //меню работы с сотрудниками
             {
                 Console.Clear();
-                
+                Console.WriteLine("Информационная система!\n\n");
+                Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
+                    "1\tДля просмотра всех сотрудников\n" +
+                    "2\tДля просмотра всех отделов" +
+                    "3\tДля сохранения базы данных" +
+                    "4\tДля выхода из программы"
+                    );
+                string result = Console.ReadLine();
+                switch (result)
+                {
+                    case "1": Wrk.PrintAllWorkers(); break;
+                    case "2": Wrk.AddWorkers(); break;
+                    case "3": Wrk.EditWorker(); break;
+                    case "4": break;
+                    default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
+                }
             }
 
-            void Deps()
+            void Deps() // меню работы с отделами
             {
-
+                Console.Clear();
+                Console.WriteLine("Информационная система!\n\n");
+                Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
+                    "1\tДля просмотра всех сотрудников\n" +
+                    "2\tДля просмотра всех отделов" +
+                    "3\tДля сохранения базы данных" +
+                    "4\tДля выхода из программы"
+                    );
+                string result = Console.ReadLine();
+                switch (result)
+                {
+                    case "1": Workers(); break;
+                    case "2": Deps(); break;
+                    case "3": SaveBD(); break;
+                    case "4": break;
+                    default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
+                }
             }
 
-            void SaveBD()
+            void SaveBD() // меню сохранения БД
             {
-
+                Console.Clear();
+                Console.WriteLine("Информационная система!\n\n");
+                Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
+                    "1\tДля просмотра всех сотрудников\n" +
+                    "2\tДля просмотра всех отделов" +
+                    "3\tДля сохранения базы данных" +
+                    "4\tДля выхода из программы"
+                    );
+                string result = Console.ReadLine();
+                switch (result)
+                {
+                    case "1": Workers(); break;
+                    case "2": Deps(); break;
+                    case "3": SaveBD(); break;
+                    case "4": break;
+                    default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
+                }
             }
             /*
-          Просмотр всех сотрудников      PrintAllWorkers()
-          Создание сотрудника            AddWorkers()
-          Редактирование сотрудника      EditWorker()
-          Удаление сотрудника            DeleteWorker()
+          Просмотр всех сотрудников      Wrk.PrintAllWorkers()
+          Создание сотрудника            Wrk.AddWorkers()
+          Редактирование сотрудника      Wrk.EditWorker()
+          Удаление сотрудника            Wrk.DeleteWorker()
           * 
           * 
-          Просмотр отделов               Print()
-          Создание нового Отдела         NewDepartment()
-          Редактирование отдела          EditDept()
-          Удаление отдела                DeleteDept()
+          Просмотр отделов               Dlt.Print()
+          Создание нового Отдела         Dlt.NewDepartment()
+          Редактирование отдела          Dlt.EditDept()
+          Удаление отдела                Dlt.DeleteDept()
           *
           *
           Сохранение в 
            */
 
-            
+
             void Test()
             {
                 Random rnd = new Random();
