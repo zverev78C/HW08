@@ -38,9 +38,5 @@ namespace из_файла
             return str;
         }
 
-        //public static void ChangeDepsWorkerAdd(Works newWorker, string deptName)
-        //{
-        //    Dlt.ChangeDepsWorkerAdd(newWorker, deptName);
-        //}
     }
 }

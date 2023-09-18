@@ -9,23 +9,21 @@ namespace из_файла
     class Works
     {
         Check ck = new Check();
-        //Program Fdt = new Program();
-        //Department Dlt = new Department();
-        private List<Works> workrs = new List<Works>(); // список всех сотрудников
+       List<Works> workrs = new List<Works>(); // список всех сотрудников
 
         #region свойства 
-        private int WorkID { get; set; } // Табельный номер
-        private string FisrtName { get; set; }// Имя
-        private string LastName { get; set; } // Фамилия
-        private int Age { get; set; } // Возраст
-        private string WorkDept { get; set; }// Отдел
-        private int Solary { get; set; } // ЗряПлата
-        private int CountProject { get; set; } // Количество проектов
+        int WorkID { get; set; } // Табельный номер
+        string FisrtName { get; set; }// Имя
+        string LastName { get; set; } // Фамилия
+        int Age { get; set; } // Возраст
+        string WorkDept { get; set; }// Отдел
+        int Solary { get; set; } // ЗряПлата
+        int CountProject { get; set; } // Количество проектов
         #endregion
 
         #region Конструкторы 
 
-        private Works(int workID, string firstName, string lastName,
+        Works(int workID, string firstName, string lastName,
             int age, string workDept, int solary, int countProject)
         {
             WorkID = workID;
@@ -52,6 +50,7 @@ namespace из_файла
         public void PrintAllWorkers()
         {
             PrintTitle();
+            Console.WriteLine(workrs.Count);
             for (int i = 0; i < workrs.Count; i++)
             {
                 Console.WriteLine(workrs[i].Print());

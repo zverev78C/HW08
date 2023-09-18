@@ -8,9 +8,6 @@ namespace из_файла
 {
     class Department
     {
-       
-        //Works Wrks = new Works();
-        //Mech Fdt = new Mech();
          List<Department> Deps = new List<Department>();
 
         #region свойства 
@@ -104,10 +101,10 @@ namespace из_файла
         /// </summary>
         public void Print()
         {
-            Console.WriteLine("Индекс\t   Название\t\tдата создания отдела\t\tкол-во работников\n ");
+            Console.WriteLine("Индекс\tНазвание\t\tдата создания отдела\tкол-во работников\n ");
             for (int i = 0; i < Deps.Count; i++)
             {
-                Console.WriteLine($"{i}  {Deps[i].Name}\t\t{Deps[i].RegDate:D}\t\t{Deps[i].Works.Count} ");
+                Console.WriteLine($"  {i}\t{Deps[i].Name}\t\t\t{Deps[i].RegDate:D}\t{Deps[i].Works.Count} ");
             }
         }
         /// <summary>

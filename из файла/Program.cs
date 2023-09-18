@@ -102,8 +102,9 @@ namespace из_файла
 
         public static void Main()
         {
+            var Wrk = new Works();
             //Works Wrk = new Works();
-            // Department Dlt = new Department();
+            Department Dlt = new Department();
             //Check ck = new Check();
             bool flag = true;
             while (flag)
@@ -134,12 +135,12 @@ namespace из_файла
                 Console.WriteLine("Информационная система!\n\n");
                 Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
                     "1\tДля просмотра всех сотрудников\n" +
-                    "2\tДля просмотра всех отделов" +
-                    "3\tДля сохранения базы данных" +
-                    "4\tДля выхода из программы"
+                    "2\tДля Создание сотрудника \n" +
+                    "3\tДля Редактирование сотрудника\n" +
+                    "4\tДля Удаление сотрудника\n" +
+                    "5\tДля возврата в главное меню."
                     );
                 string result = Console.ReadLine();
-                var Wrk = new Works();
                 switch (result)
                 {
                     case "1": Wrk.PrintAllWorkers(); break;  //Просмотр всех сотрудников 
@@ -162,7 +163,6 @@ namespace из_файла
                     "4\tДля выхода из программы"
                     );
                 string result = Console.ReadLine();
-                var Dlt = new Department();
                 switch (result)
                 {
                     case "1": Dlt.Print(); break;               // Просмотр отделов 
@@ -205,11 +205,6 @@ namespace из_файла
 
                 // Тестовое заполнение списка сотрудников случайным количеством.
                 int testWokers = rnd.Next(10, 100);
-                //int testWokerAge = rnd.Next(20, 63);
-                //int testSolary = rnd.Next(30000, 100000);
-                //int testCountProject = rnd.Next(0, 5);
-                var Wrk = new Works();
-                var Dlt = new Department();
                 for (int i = 0; i <= testWokers; i++)
                 {
                     Wrk.AddWorkersTest($"Вася_{i}", $"Пупкин_{i}", rnd.Next(20, 63), $"Отдел {rnd.Next(1, testDept + 1)}", rnd.Next(30000, 100000), rnd.Next(0, 5));
@@ -234,10 +229,6 @@ namespace из_файла
         /// <param name="noNull">возможно оставть пустую строку</param>
         /// <param name="num"> ожидается число Int </param>
         /// <returns> строку которую при необходимости надо конвертировать в int </returns>
-
-    }
-    public class Mech
-    {
 
     }
 }
