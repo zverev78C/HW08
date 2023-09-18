@@ -8,9 +8,9 @@ namespace из_файла
     /// </summary>
     class Works
     {
-        
-        Mech Fdt = new Mech();
-        Department Dlt = new Department();
+        Check ck = new Check();
+        //Program Fdt = new Program();
+        //Department Dlt = new Department();
         private List<Works> workrs = new List<Works>(); // список всех сотрудников
 
         #region свойства 
@@ -39,13 +39,6 @@ namespace из_файла
 
         public Works()
         {
-            WorkID = 0;
-            FisrtName = "";
-            LastName = "";
-            Age = 0;
-            WorkDept = "";
-            Solary = 0;
-            CountProject = 0;
         }
 
         #endregion
@@ -71,17 +64,17 @@ namespace из_файла
         {
             int workID = (workrs.Count == 0 ? 0 : workrs.Count); // проверка на пустой список сотрудников
             Console.Write("Имя сотрудника:  ");
-            string firstName = Fdt.InputCheck(true, false);
+            string firstName = Check.InputCheck(true, false);
             Console.Write("Фамилия сотрудника:  ");
-            string lastName = Fdt.InputCheck(true, false);
+            string lastName = Check.InputCheck(true, false);
             Console.Write("Возраст сотрудника:  ");
-            int age = Convert.ToInt32(Fdt.InputCheck(true, true));
+            int age = Convert.ToInt32(Check.InputCheck(true, true));
             Console.Write("Отдел сотрудника:  ");
-            string workDept = Fdt.InputCheck(true, false);
+            string workDept = Check.InputCheck(true, false);
             Console.Write("Зарплата сотрудника:  ");
-            int solary = Convert.ToInt32(Fdt.InputCheck(true, true));
+            int solary = Convert.ToInt32(Check.InputCheck(true, true));
             Console.Write("Количество проектов сотрудника:  ");
-            int projects = Convert.ToInt32(Fdt.InputCheck(true, true));
+            int projects = Convert.ToInt32(Check.InputCheck(true, true));
 
             Works tempWorker = new Works(WorkID = workID + 1, // Табельный номер нового сотрудника
                                           FisrtName = firstName, // Имя сотрудника
@@ -91,6 +84,7 @@ namespace из_файла
                                           Solary = solary,
                                           CountProject = projects);
             workrs.Add(tempWorker);
+            var Dlt = new Department();
             Dlt.ChangeDepsWorkerAdd(tempWorker, workDept);
         }
         /// <summary>
@@ -100,31 +94,31 @@ namespace из_файла
         {
             PrintAllWorkers();
             Console.WriteLine("Введите ID работника:");
-            int id = Convert.ToInt32(Fdt.InputCheck(true, true));
+            int id = Convert.ToInt32(Check.InputCheck(true, true));
 
             Console.WriteLine("Введите следющую информацию о работнике: ");
 
             Console.WriteLine($"Существующее Имя: {workrs[id].FisrtName}.\t Новое имя: ");
-            string firstName = Fdt.InputCheck(false, false);                    // допускается пустая строка для сохранения старого имени
+            string firstName = Check.InputCheck(false, false);                    // допускается пустая строка для сохранения старого имени
             if (firstName == "") { firstName = workrs[id].FisrtName; }
             Console.WriteLine($"Существующая Фамилия: {workrs[id].LastName}.\t Новая Фамилия: ");
-            string lastName = Fdt.InputCheck(false, false);
+            string lastName = Check.InputCheck(false, false);
             if (lastName == "") { lastName = workrs[id].LastName; }
             Console.WriteLine($"Существующий возраст: {workrs[id].Age}.\\t Новый возраст: ");
-            string age = Fdt.InputCheck(false, true);
+            string age = Check.InputCheck(false, true);
             int tempAge;
             if (age == "") { tempAge = workrs[id].Age; } else { tempAge = Int32.Parse(age); }
             Console.WriteLine($"Существующий отдел: {workrs[id].WorkDept}.\\t Новый отдел: ");
-            string dept = Fdt.InputCheck(false, false);
+            string dept = Check.InputCheck(false, false);
             string oldDep = "";                                       //сохраняем старое название отдела для редактирования отделов
             if (dept == "") { dept = workrs[id].WorkDept; } else { oldDep = workrs[id].WorkDept; }
             Console.WriteLine($"Существующая зарплата: {workrs[id].Solary}.\\t Новая зарплата: ");
             int tempSolary;
-            string solary = Fdt.InputCheck(false, true);
+            string solary = Check.InputCheck(false, true);
             if (solary == "") { tempSolary = workrs[id].Solary; } else { tempSolary = Int32.Parse(solary); }
             Console.WriteLine($"Существующие проекты: {workrs[id].CountProject}.\\t Изменить кол-во проектов: ");
             int tempPrj;
-            string projects = Fdt.InputCheck(false, true);
+            string projects = Check.InputCheck(false, true);
             if (projects == "") { tempPrj = workrs[id].CountProject; } else { tempPrj = Int32.Parse(projects); }
 
             Works tempWorker = new Works(workrs[id].WorkID,
@@ -137,6 +131,7 @@ namespace из_файла
             workrs[id] = tempWorker;
             if (dept != "") // при изменении отдела сотрудника
             {
+                var Dlt = new Department();
                 Dlt.ChangeDepsWorkerAdd(tempWorker, dept); // добавляется в новый отдел
                 Dlt.ChangeDepsWorkerDel(oldDep); // удаляется из старого
             }
@@ -150,8 +145,9 @@ namespace из_файла
         {
             PrintAllWorkers();
             Console.WriteLine("Введите ID работника:");
-            int id = Convert.ToInt32(Fdt.InputCheck(true, true));
+            int id = Convert.ToInt32(Check.InputCheck(true, true));
             string depName = workrs[id].WorkDept;
+            var Dlt = new Department();
             Dlt.ChangeDepsWorkerDel(depName); // удаление сотрудника из списка отдела
             workrs.Remove(workrs[id]);
         }
@@ -187,7 +183,7 @@ namespace из_файла
         /// </summary>
         private void PrintTitle()
         {
-            Console.WriteLine("Таб.№\t   Имя\t  Фамилия\t Возраст\t Yfpdfybt отдела\t Зарплата\t Количество проектов\n ");
+            Console.WriteLine("Таб.номер\t   Имя\t  Фамилия\t Возраст\t Название отдела\t Зарплата\t Количество проектов\n ");
         }
         /// <summary>
         /// Метод возвращающий сотрудника для печати 
@@ -201,20 +197,21 @@ namespace из_файла
         #endregion
 
         #region Методы для тестов
-        public void AddWorkersTest(string firstName, string lastName,int age,string workDept,int solary,int projects)
+        public void AddWorkersTest(string firstName, string lastName, int age, string workDept, int solary, int projects)
         {
             int workID = (workrs.Count == 0 ? 0 : workrs.Count); // проверка на пустой список сотрудников
-           
-            
 
-            Works tempWorker = new Works(  WorkID = workID + 1, // Табельный номер нового сотрудника
+
+
+            Works tempWorker = new Works(WorkID = workID + 1, // Табельный номер нового сотрудника
                                           FisrtName = firstName, // Имя сотрудника
                                           LastName = lastName,
                                           Age = age,
                                           WorkDept = workDept,
                                           Solary = solary,
-                                          CountProject = projects );
+                                          CountProject = projects);
             workrs.Add(tempWorker);
+            var Dlt = new Department();
             Dlt.ChangeDepsWorkerAdd(tempWorker, workDept);
         }
 

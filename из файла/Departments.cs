@@ -8,10 +8,10 @@ namespace из_файла
 {
     class Department
     {
-        /*
-        Works Wrks = new Works();
-        Mech Fdt = new Mech();
-        List<Department> Deps = new List<Department>();
+       
+        //Works Wrks = new Works();
+        //Mech Fdt = new Mech();
+         List<Department> Deps = new List<Department>();
 
         #region свойства 
         private string Name { get; set; }
@@ -39,8 +39,9 @@ namespace из_файла
         /// </summary>
         public void NewDepartment()
         {
-            string name = Fdt.InputCheck(true, false);
+            string name = Check.InputCheck(true, false);
             _ = new List<Works>();
+            var Wrks = new Works();
             List<Works> depList = Wrks.DepsList(name);
 
             Deps.Add(new Department(Name = name, RegDate = DateTime.Now, Works = depList));
@@ -50,7 +51,7 @@ namespace из_файла
         /// </summary>
         /// <param name="newWorker"></param>
         /// <param name="deptName"></param>
-        public void ChangeDepsWorkerAdd(Works newWorker, string deptName)
+        public  void ChangeDepsWorkerAdd(Works newWorker, string deptName)
         {
             for (int i = 0; i < Deps.Count; i++)
             {
@@ -66,6 +67,7 @@ namespace из_файла
         /// <param name="deptName"></param>
         public void ChangeDepsWorkerDel(string deptName)
         {
+            var Wrks = new Works();
             for (int i = 0; i < Deps.Count; i++)
             {
                 if (Deps[i].Name == deptName)
@@ -82,7 +84,7 @@ namespace из_файла
             Print();
 
             Console.Write("Введите индекс отдела: ");
-            string name = Fdt.InputCheck(true, true); // проверка ввода пользователя
+            string name = Check.InputCheck(true, true); // проверка ввода пользователя
             int itr = Int32.Parse(name);
             if (itr >= Deps.Count) // проверка что такой отдел существует ( не превышает индекс самого большого отдела)
             {
@@ -91,7 +93,7 @@ namespace из_файла
             else
             {
                 Console.WriteLine("Введите новое название:");
-                string newName = Fdt.InputCheck(true, false);
+                string newName = Check.InputCheck(true, false);
                 Deps[itr].Name = newName;
 
             }
@@ -116,8 +118,9 @@ namespace из_файла
             Print();
 
             Console.Write("Введите индекс отдела: ");
-            string name = Fdt.InputCheck(true, true); // проверка ввода пользователя
+            string name = Check.InputCheck(true, true); // проверка ввода пользователя
             int itr = Int32.Parse(name);
+            var Wrks = new Works();
             if (itr >= Deps.Count) // проверка что такой отдел существует ( не превышает индекс самого большого отдела)
             {
                 Console.WriteLine($"Отдела с индексом: {itr}, не существует.");
@@ -140,7 +143,7 @@ namespace из_файла
         #region Методы для тестов 
         public void NewDepartmentTest(string name)
         {
-            //string name = Fdt.InputCheck(true, false);
+            var Wrks = new Works();
             _ = new List<Works>();
             List<Works> depList = Wrks.DepsList(name);
 

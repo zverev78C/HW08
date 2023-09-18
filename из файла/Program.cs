@@ -100,10 +100,11 @@ namespace из_файла
         */
         #endregion
 
-        static void Main()
+        public static void Main()
         {
-            // Works Wrk = new Works();
+            //Works Wrk = new Works();
             // Department Dlt = new Department();
+            //Check ck = new Check();
             bool flag = true;
             while (flag)
             {
@@ -115,13 +116,13 @@ namespace из_файла
                     "3\tДля сохранения базы данных\n" +
                     "4\tДля выхода из программы"
                     );
-                string result = Mech.InputCheck(true,false);//Console.ReadLine();
+                string result = Check.InputCheck(true, false);//Console.ReadLine();
                 switch (result)
                 {
-                    //case "100": Test(); break;
-                    //case "1": Workers(); break;
-                    //case "2": Deps(); break;
-                    //case "3": SaveBD(); break;
+                    case "100": Test(); break;
+                    case "1": Workers(); break;
+                    case "2": Deps(); break;
+                    case "3": SaveBD(); break;
                     case "4": flag = false; break;
                     default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
                 }
@@ -138,6 +139,7 @@ namespace из_файла
                     "4\tДля выхода из программы"
                     );
                 string result = Console.ReadLine();
+                var Wrk = new Works();
                 switch (result)
                 {
                     case "1": Wrk.PrintAllWorkers(); break;  //Просмотр всех сотрудников 
@@ -149,78 +151,82 @@ namespace из_файла
                 }
             }
 
-            //void Deps() // меню работы с отделами
-            //{
-            //    Console.Clear();
-            //    Console.WriteLine("Информационная система!\n\n");
-            //    Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
-            //        "1\tДля просмотра всех сотрудников\n" +
-            //        "2\tДля просмотра всех отделов" +
-            //        "3\tДля сохранения базы данных" +
-            //        "4\tДля выхода из программы"
-            //        );
-            //    string result = Console.ReadLine();
-            //    switch (result)
-            //    {
-            //        case "1": Dlt.Print(); break;               // Просмотр отделов 
-            //        case "2": Dlt.NewDepartment(); break;       // Создание нового Отдела  
-            //        case "3": Dlt.EditDept(); break;            // Редактирование отдела  
-            //        case "4": Dlt.DeleteDept(); break;          // Удаление отдела 
-            //        case "5": break;
-            //        default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
-            //    }
-            //}
+            void Deps() // меню работы с отделами
+            {
+                Console.Clear();
+                Console.WriteLine("Информационная система!\n\n");
+                Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
+                    "1\tДля просмотра всех сотрудников\n" +
+                    "2\tДля просмотра всех отделов" +
+                    "3\tДля сохранения базы данных" +
+                    "4\tДля выхода из программы"
+                    );
+                string result = Console.ReadLine();
+                var Dlt = new Department();
+                switch (result)
+                {
+                    case "1": Dlt.Print(); break;               // Просмотр отделов 
+                    case "2": Dlt.NewDepartment(); break;       // Создание нового Отдела  
+                    case "3": Dlt.EditDept(); break;            // Редактирование отдела  
+                    case "4": Dlt.DeleteDept(); break;          // Удаление отдела 
+                    case "5": break;
+                    default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
+                }
+            }
 
-            //void SaveBD() // меню сохранения БД
-            //{
-            //    Console.Clear();
-            //    Console.WriteLine("Информационная система!\n\n");
-            //    Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
-            //        "1\tДля просмотра всех сотрудников\n" +
-            //        "2\tДля просмотра всех отделов" +
-            //        "3\tДля сохранения базы данных" +
-            //        "4\tДля выхода из программы"
-            //        );
-            //    string result = Console.ReadLine();
-            //    switch (result)
-            //    {
-            //        case "1": Workers(); break;
-            //        case "2": Deps(); break;
-            //        case "3": SaveBD(); break;
-            //        case "4": break;
-            //        default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
-            //    }
-            //}
+            void SaveBD() // меню сохранения БД
+            {
+                Console.Clear();
+                Console.WriteLine("Информационная система!\n\n");
+                Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
+                    "1\tДля просмотра всех сотрудников\n" +
+                    "2\tДля просмотра всех отделов" +
+                    "3\tДля сохранения базы данных" +
+                    "4\tДля выхода из программы"
+                    );
+                string result = Console.ReadLine();
+                switch (result)
+                {
+                    case "1": Workers(); break;
+                    case "2": Deps(); break;
+                    case "3": SaveBD(); break;
+                    case "4": break;
+                    default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
+                }
+            }
 
-            //void Test()
-            //{
-            //    Random rnd = new Random();
-            //    Console.WriteLine("\n\nТестовый режим, автоматическое заполнение БД.");
+            void Test()
+            {
+                Random rnd = new Random();
+                Console.WriteLine("\n\nТестовый режим, автоматическое заполнение БД.");
 
-            //    // Тестовое заполнение списка отделов случайным количеством.
-            //    int testDept = rnd.Next(1, 10);
+                // Тестовое заполнение списка отделов случайным количеством.
+                int testDept = rnd.Next(1, 10);
 
-            //    // Тестовое заполнение списка сотрудников случайным количеством.
-            //    int testWokers = rnd.Next(10, 100);
-            //    int testWokerAge = rnd.Next(20, 63);
-            //    int testSolary = rnd.Next(30000, 100000);
-            //    int testCountProject = rnd.Next(0, 5);
+                // Тестовое заполнение списка сотрудников случайным количеством.
+                int testWokers = rnd.Next(10, 100);
+                int testWokerAge = rnd.Next(20, 63);
+                int testSolary = rnd.Next(30000, 100000);
+                int testCountProject = rnd.Next(0, 5);
+                var Wrk = new Works();
+                var Dlt = new Department();
+                for (int i = 0; i <= testWokers; i++)
+                {
+                    Wrk.AddWorkersTest($"Вася_{i}", $"Пупкин_{i}", testWokerAge, $"Отдел {rnd.Next(1, testDept + 1)}", testSolary, testCountProject);
+                }
 
-            //    for (int i = 0; i <= testWokers; i++)
-            //    {
-            //        Wrk.AddWorkersTest($"Вася_{i}", $"Пупкин_{i}", testWokerAge, $"Отдел {rnd.Next(1, testDept + 1)}", testSolary, testCountProject);
-            //    }
+                for (int i = 1; i <= testDept; i++)
+                {
+                    Dlt.NewDepartmentTest($"Отдел {i}");
+                }
 
-            //    for (int i = 1; i <= testDept; i++)
-            //    {
-            //        Dlt.NewDepartmentTest($"Отдел {i}");
-            //    }
+                Console.WriteLine($"\nСоздано {testDept} Отделов");
+                Dlt.Print();
+                Console.WriteLine($"Создано {testWokers} сотрудников\n\n");
+                Wrk.PrintAllWorkers();
+            }
 
-            //    Console.WriteLine($"\nСоздано {testDept} Отделов");
-            //    Dlt.Print();
-            //    Console.WriteLine($"Создано {testWokers} сотрудников\n\n");
-            //    Wrk.PrintAllWorkers();
-            //}
+
         }
         /// <summary>
         /// Метод контроля ввода данных от пользователя
@@ -232,37 +238,6 @@ namespace из_файла
     }
     public class Mech
     {
-        public int costyl { get; set; }
-        public Mech()
-        {
-            costyl = 0;
-        }
-        public static string  InputCheck(bool noNull, bool num)
-        {
-            string str = Console.ReadLine();
-            if (noNull == true)
-            {
-                while (str == "")
-                {
-                    Console.WriteLine("Строка не должна быть пустой.");
-                    str = Console.ReadLine();
-                }
-            }
-            if (num == true && noNull == true)
-            {
-                while (true)
-                {
-                    bool result = int.TryParse(str, out _);
-                    if (result == false)
-                    {
-                        Console.WriteLine("В строке должно быть целое число");
-                        Console.ReadLine();
 
-                    }
-                    else { break; }
-                }
-            }
-            return str;
-        }
     }
 }
