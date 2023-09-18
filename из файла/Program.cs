@@ -104,8 +104,7 @@ namespace из_файла
         {
             Works Wrk = new Works();
             Department Dlt = new Department();
-            bool flag = true;
-            while (flag)
+            while(true)
             {
                 Console.WriteLine("Информационная система!\n\n");
                 Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
@@ -115,109 +114,113 @@ namespace из_файла
                     "3\tДля сохранения базы данных" +
                     "4\tДля выхода из программы"
                     );
-                switch (InputCheck(true, false))
+                string result = Console.ReadLine();
+                switch ( result ) 
                 {
+                    case "100": Test(); break;
                     case "1": Workers(); break;
-                    case "2": break;
-                    case "3": break;
-                    case "4": flag = false; break;
-                }
-
-                void Workers()
-                {
-                    Console.Clear();
-                    Console.WriteLine("Информационная система!\n\n");
-                    Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
-                        "100\tДля тестового заполнения БД\n" +
-                        "1\tДля просмотра всех сотрудников\n" +
-                        "2\tДля просмотра всех отделов" +
-                        "3\tДля сохранения базы данных" +
-                        "4\tДля выхода из программы"
-                        );
-                }
-                /*
-              Просмотр всех сотрудников      PrintAllWorkers()
-              Создание сотрудника            AddWorkers()
-              Редактирование сотрудника      EditWorker()
-              Удаление сотрудника            DeleteWorker()
-              * 
-              * 
-              Просмотр отделов               Print()
-              Создание нового Отдела         NewDepartment()
-              Редактирование отдела          EditDept()
-              Удаление отдела                DeleteDept()
-              *
-              *
-              Сохранение в 
-               */
-
-
-                void Test()
-                {
-                    Random rnd = new Random();
-                    Console.WriteLine("\n\nТестовый режим, автоматическое заполнение БД.");
-
-                    // Тестовое заполнение списка отделов случайным количеством.
-                    int testDept = rnd.Next(1, 10);
-
-                    // Тестовое заполнение списка сотрудников случайным количеством.
-                    int testWokers = rnd.Next(10, 100);
-                    int testWokerAge = rnd.Next(20, 63);
-                    int testSolary = rnd.Next(30000, 100000);
-                    int testCountProject = rnd.Next(0, 5);
-
-                    for (int i = 0; i <= testWokers; i++)
-                    {
-                        Wrk.AddWorkersTest($"Вася_{i}", $"Пупкин_{i}", testWokerAge, $"Отдел {rnd.Next(1, testDept + 1)}", testSolary, testCountProject);
-                    }
-
-                    for (int i = 1; i <= testDept; i++)
-                    {
-                        Dlt.NewDepartmentTest($"Отдел {i}");
-                    }
-
-                    Console.WriteLine($"\nСоздано {testDept} Отделов");
-                    Dlt.Print();
-                    Console.WriteLine($"Создано {testWokers} сотрудников\n\n");
-                    Wrk.PrintAllWorkers();
+                    case "2": Deps();  break;
+                    case "3": SaveBD(); break;
+                    case "4": break;
+                    default: Console.WriteLine("Выбор не понятен попробуйте еще разю");break;
                 }
             }
-            /// <summary>
-            /// Метод контроля ввода данных от пользователя
-            /// </summary>
-            /// <param name="noNull">возможно оставть пустую строку</param>
-            /// <param name="num"> ожидается число Int </param>
-            /// <returns> строку которую при необходимости надо конвертировать в int </returns>
-            public string InputCheck(bool noNull, bool num)
-            {
-                string str = Console.ReadLine();
-                if (noNull == true)
-                {
-                    while (str == "")
-                    {
-                        Console.WriteLine("Строка не должна быть пустой.");
-                        str = Console.ReadLine();
-                    }
-                }
-                if (num == true && noNull == true)
-                {
-                    while (true)
-                    {
-                        bool result = int.TryParse(str, out _);
-                        if (result == false)
-                        {
-                            Console.WriteLine("В строке должно быть целое число");
-                            Console.ReadLine();
 
-                        }
-                        else { break; }
-                    }
+            void Workers ()
+            {
+                Console.Clear();
+                
+            }
+
+            void Deps()
+            {
+
+            }
+
+            void SaveBD()
+            {
+
+            }
+            /*
+          Просмотр всех сотрудников      PrintAllWorkers()
+          Создание сотрудника            AddWorkers()
+          Редактирование сотрудника      EditWorker()
+          Удаление сотрудника            DeleteWorker()
+          * 
+          * 
+          Просмотр отделов               Print()
+          Создание нового Отдела         NewDepartment()
+          Редактирование отдела          EditDept()
+          Удаление отдела                DeleteDept()
+          *
+          *
+          Сохранение в 
+           */
+
+            
+            void Test()
+            {
+                Random rnd = new Random();
+                Console.WriteLine("\n\nТестовый режим, автоматическое заполнение БД.");
+
+                // Тестовое заполнение списка отделов случайным количеством.
+                int testDept = rnd.Next(1, 10);
+
+                // Тестовое заполнение списка сотрудников случайным количеством.
+                int testWokers = rnd.Next(10, 100);
+                int testWokerAge = rnd.Next(20, 63);
+                int testSolary = rnd.Next(30000, 100000);
+                int testCountProject = rnd.Next(0, 5);
+
+                for (int i = 0; i <= testWokers; i++)
+                {
+                    Wrk.AddWorkersTest($"Вася_{i}", $"Пупкин_{i}", testWokerAge, $"Отдел {rnd.Next(1, testDept + 1)}", testSolary, testCountProject);
                 }
-                return str;
+
+                for (int i = 1; i <= testDept; i++)
+                {
+                    Dlt.NewDepartmentTest($"Отдел {i}");
+                }
+
+                Console.WriteLine($"\nСоздано {testDept} Отделов");
+                Dlt.Print();
+                Console.WriteLine($"Создано {testWokers} сотрудников\n\n");
+                Wrk.PrintAllWorkers();
             }
         }
-        struct test
+        /// <summary>
+        /// Метод контроля ввода данных от пользователя
+        /// </summary>
+        /// <param name="noNull">возможно оставть пустую строку</param>
+        /// <param name="num"> ожидается число Int </param>
+        /// <returns> строку которую при необходимости надо конвертировать в int </returns>
+        public string InputCheck(bool noNull, bool num)
         {
+            string str = Console.ReadLine();
+            if (noNull == true)
+            {
+                while (str == "")
+                {
+                    Console.WriteLine("Строка не должна быть пустой.");
+                    str = Console.ReadLine();
+                }
+            }
+            if (num == true && noNull == true)
+            {
+                while (true)
+                {
+                    bool result = int.TryParse(str, out _);
+                    if (result == false)
+                    {
+                        Console.WriteLine("В строке должно быть целое число");
+                        Console.ReadLine();
 
+                    }
+                    else { break; }
+                }
+            }
+            return str;
         }
     }
+  
+}
