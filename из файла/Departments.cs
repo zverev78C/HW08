@@ -8,9 +8,9 @@ namespace из_файла
 {
     class Department
     {
-        readonly Works Wrks = new Works();
-        readonly Program Fdt = new Program();
-        readonly List<Department> Deps = new List<Department>();
+        Works Wrks = new Works();
+        Mech Fdt = new Mech();
+        List<Department> Deps = new List<Department>();
 
         #region свойства 
         private string Name { get; set; }

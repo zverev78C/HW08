@@ -104,7 +104,9 @@ namespace из_файла
         {
             Works Wrk = new Works();
             Department Dlt = new Department();
-            while(true)
+
+
+            while (true)
             {
                 Console.WriteLine("Информационная система!\n\n");
                 Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
@@ -115,18 +117,18 @@ namespace из_файла
                     "4\tДля выхода из программы"
                     );
                 string result = Console.ReadLine();
-                switch ( result ) 
+                switch (result)
                 {
                     case "100": Test(); break;
                     case "1": Workers(); break;
-                    case "2": Deps();  break;
+                    case "2": Deps(); break;
                     case "3": SaveBD(); break;
                     case "4": break;
-                    default: Console.WriteLine("Выбор не понятен попробуйте еще разю");break;
+                    default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
                 }
             }
 
-            void Workers () //меню работы с сотрудниками
+            void Workers() //меню работы с сотрудниками
             {
                 Console.Clear();
                 Console.WriteLine("Информационная система!\n\n");
@@ -190,8 +192,6 @@ namespace из_файла
                     default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
                 }
             }
-            
-
 
             void Test()
             {
@@ -229,6 +229,11 @@ namespace из_файла
         /// <param name="noNull">возможно оставть пустую строку</param>
         /// <param name="num"> ожидается число Int </param>
         /// <returns> строку которую при необходимости надо конвертировать в int </returns>
+
+    }
+    class Mech
+    {
+        public Mech() { }
         public string InputCheck(bool noNull, bool num)
         {
             string str = Console.ReadLine();
@@ -257,5 +262,4 @@ namespace из_файла
             return str;
         }
     }
-  
 }
