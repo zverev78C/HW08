@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace из_файла
 {
-    internal class Check
+    internal class MyMetods
     {
         /// <summary>
         /// Метод проверки ввода данных от пользователя  
@@ -14,20 +14,20 @@ namespace из_файла
         /// <param name="noNull"> Допускается ли пустая строка </param>
         /// <param name="num"> ожидается ли число </param>
         /// <returns></returns>
-       public static string InputCheck(bool noNull, bool num)
+        public static string InputCheck(bool noNull, bool num) // требует статичный метод уточнить
         {
-            string str = Console.ReadLine();
-            if (noNull == true)
+            string str = Console.ReadLine(); // Ввод проверяемого значения 
+            if (noNull == true) // проверка на пустоту 
             {
-                while (str == "")
+                while (str == "") // цикл не позволяющий дальнеешее выполнение программы пока не будет удволетварено требование 
                 {
                     Console.WriteLine("Строка не должна быть пустой.");
                     str = Console.ReadLine();
                 }
             }
-            if (num == true && noNull == true)
+            if (num == true && noNull == true) // проверяем не ожидается ли число в итоге
             {
-                while (true)
+                while (true)  // цикл не позволяющий дальнеешее выполнение программы пока не будет удволетварено требование 
                 {
                     bool result = int.TryParse(str, out _);
                     if (result == false)

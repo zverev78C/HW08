@@ -6,160 +6,51 @@ using System.Threading.Tasks;
 
 namespace из_файла
 {
+    /// <summary>
+    /// Структура описывающий отдел 
+    /// </summary>
     class Department
     {
-        /// <summary>
-        /// Список отделов  
-        /// </summary>
-         List<Department> Deps = new List<Department>();
-
         #region свойства 
+
         /// <summary>
         /// Название отдела 
         /// </summary>
-        private string Name { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// Время создания отдела  
         /// </summary>
-        private DateTime RegDate { get; set; }
+        public DateTime RegDate { get; set; }
         /// <summary>
         /// Список сотрудников отдела   
         /// </summary>
-        private List<Works> Works { get; set; }
+        public List<Worker> Workers { get; set; }
+
         #endregion
 
         #region конструкторы  
 
-        private Department(string name, DateTime date, List<Works> list)
+        public Department(string name, DateTime date, List<Worker> list)
         {
             Name = name;
             RegDate = date;
-            Works = list;
+            Workers = list;
         }
-        public Department()
-        {
-        }
+
         #endregion
 
-        #region методы 
+        #region Методы
 
         /// <summary>
-        /// Метод создания нового отдела
+        /// Метод выводящий заголовки отделов в консоль 
         /// </summary>
-        public void NewDepartment()
-        {
-            Console.WriteLine("Введите название отдела:");
-            string name = Check.InputCheck(true, false);
-            _ = new List<Works>();
-            var Wrks = new Works();
-            List<Works> depList = Wrks.DepsList(name);
-
-            Deps.Add(new Department(Name = name, RegDate = DateTime.Now, Works = depList));
-        }
-        /// <summary>
-        /// Метод добовляющий нового сотрудника при создании в соответствующий список отдела 
-        /// </summary>
-        /// <param name="newWorker"></param>
-        /// <param name="deptName"></param>
-        public  void ChangeDepsWorkerAdd(Works newWorker, string deptName)
-        {
-            for (int i = 0; i < Deps.Count; i++)
-            {
-                if (Deps[i].Name == deptName)
-                {
-                    Deps[i].Works.Add(newWorker);
-                }
-            }
-        }
-        /// <summary>
-        /// Метод удаления сотрудника из списка отдела 
-        /// </summary>
-        /// <param name="deptName"></param>
-        public void ChangeDepsWorkerDel(string deptName)
-        {
-            var Wrks = new Works();
-            for (int i = 0; i < Deps.Count; i++)
-            {
-                if (Deps[i].Name == deptName)
-                {
-                    Deps[i].Works = Wrks.DepsList(deptName); // просто заменяет старый список сотрудников новым без переведеного сотрудника
-                }
-            }
-        }
-        /// <summary>
-        /// Метод редактирующий название отдела 
-        /// </summary>
-        public void EditDept()
-        {
-            Print();
-
-            Console.Write("Введите индекс отдела: ");
-            string name = Check.InputCheck(true, true); // проверка ввода пользователя
-            int itr = Int32.Parse(name);
-            if (itr >= Deps.Count) // проверка что такой отдел существует ( не превышает индекс самого большого отдела)
-            {
-                Console.WriteLine($"Отдела с индексом: {itr}, не существует.");
-            }
-            else
-            {
-                Console.WriteLine("Введите новое название:");
-                string newName = Check.InputCheck(true, false);
-                Deps[itr].Name = newName;
-
-            }
-            Print();
-        }
-        /// <summary>
-        /// Метод выводящий на экран все отделы с индексом
-        /// </summary>
-        public void Print()
+        public static void PrintTitle()
         {
             Console.WriteLine("Индекс\tНазвание\t\tдата создания отдела\tкол-во работников\n ");
-            for (int i = 0; i < Deps.Count; i++)
-            {
-                Console.WriteLine($"  {i}\t{Deps[i].Name}\t\t\t{Deps[i].RegDate:D}\t{Deps[i].Works.Count} ");
-            }
         }
-        /// <summary>
-        /// Метод условного удаления отдела 
-        /// </summary>
-        public void DeleteDept()
-        {
-            Print();
 
-            Console.Write("Введите индекс отдела: ");
-            string name = Check.InputCheck(true, true); // проверка ввода пользователя
-            int itr = Int32.Parse(name);
-            var Wrks = new Works();
-            if (itr >= Deps.Count) // проверка что такой отдел существует ( не превышает индекс самого большого отдела)
-            {
-                Console.WriteLine($"Отдела с индексом: {itr}, не существует.");
-            }
-            else
-            {
-                if (Deps[itr].Works.Count == 0) // проверка что в отделе нет работников
-                {
-                    Deps.RemoveAt(itr);
-                }
-                else
-                {
-                    Console.WriteLine($"Невозможно удалить отдел пока в нем работают люди. {Deps[itr].Works.Count} человек.\n");
-                    Wrks.PrintDeptWorkers(Deps[itr].Name);     // выводит на экран список работников
-                }
-            }
-        }
+
         #endregion
 
-        #region Методы для тестов 
-        public void NewDepartmentTest(string name)
-        {
-            var Wrks = new Works();
-            _ = new List<Works>();
-            List<Works> depList = Wrks.DepsList(name);
-
-            Deps.Add(new Department(Name = name, RegDate = DateTime.Now, Works = depList));
-        }
-
-        #endregion*/
     }
 }
