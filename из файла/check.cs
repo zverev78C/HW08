@@ -8,6 +8,12 @@ namespace из_файла
 {
     internal class Check
     {
+        /// <summary>
+        /// Метод проверки ввода данных от пользователя  
+        /// </summary>
+        /// <param name="noNull"> Допускается ли пустая строка </param>
+        /// <param name="num"> ожидается ли число </param>
+        /// <returns></returns>
        public static string InputCheck(bool noNull, bool num)
         {
             string str = Console.ReadLine();
