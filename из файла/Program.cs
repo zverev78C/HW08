@@ -169,7 +169,7 @@ namespace из_файла
                 string result = Console.ReadLine();
                 switch (result)
                 {
-                    case "1": Dlt.Print(); Deps(); break;               // Просмотр отделов 
+                    case "1": Dlt.Print(); break;               // Просмотр отделов 
                     case "2": Dlt.NewDepartment(); break;       // Создание нового Отдела  
                     case "3": Dlt.EditDept(); break;            // Редактирование отдела  
                     case "4": Dlt.DeleteDept(); break;          // Удаление отдела 

@@ -36,6 +36,7 @@ namespace из_файла
         /// </summary>
         public void NewDepartment()
         {
+            Console.WriteLine("Введите название отдела:");
             string name = Check.InputCheck(true, false);
             _ = new List<Works>();
             var Wrks = new Works();

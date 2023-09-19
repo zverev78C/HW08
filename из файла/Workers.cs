@@ -8,6 +8,9 @@ namespace из_файла
     /// </summary>
     class Works
     {
+        /// <summary>
+        /// Основной список всех сотрудников  
+        /// </summary>
        List<Works> workrs = new List<Works>(); // список всех сотрудников
 
         #region свойства 
