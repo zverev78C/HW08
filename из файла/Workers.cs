@@ -14,13 +14,34 @@ namespace из_файла
        List<Works> workrs = new List<Works>(); // список всех сотрудников
 
         #region свойства 
-        int WorkID { get; set; } // Табельный номер
-        string FisrtName { get; set; }// Имя
-        string LastName { get; set; } // Фамилия
-        int Age { get; set; } // Возраст
-        string WorkDept { get; set; }// Отдел
-        int Solary { get; set; } // ЗряПлата
-        int CountProject { get; set; } // Количество проектов
+        /// <summary>
+        /// Табельный номер  
+        /// </summary>
+        int WorkID { get; set; } 
+        /// <summary>
+        /// Имя  
+        /// </summary>
+        string FisrtName { get; set; }
+        /// <summary>
+        /// Фамилия  
+        /// </summary>
+        string LastName { get; set; }
+        /// <summary>
+        /// Возраст   
+        /// </summary>
+        int Age { get; set; }
+        /// <summary>
+        /// Отдел   
+        /// </summary>
+        string WorkDept { get; set; }
+        /// <summary>
+        /// ЗряПлата   
+        /// </summary>
+        int Solary { get; set; }
+        /// <summary>
+        /// Количество проектов
+        /// </summary>
+        int CountProject { get; set; }
         #endregion
 
         #region Конструкторы 
@@ -177,7 +198,7 @@ namespace из_файла
             {
                 if (workrs[i].WorkDept == depName) { tempWorkers.Add(workrs[i]); } //  выбирает тех у кого имя отдела совпадает с заданым
             }
-            return tempWorkers; //складывает во времееный лист и возвращает его в свойство отдела
+            return tempWorkers; //складывает во временый лист и возвращает его в свойство отдела
         }
         /// <summary>
         /// метод печатующий заголовки 
