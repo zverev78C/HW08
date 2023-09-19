@@ -8,11 +8,23 @@ namespace из_файла
 {
     class Department
     {
+        /// <summary>
+        /// Список отделов  
+        /// </summary>
          List<Department> Deps = new List<Department>();
 
         #region свойства 
+        /// <summary>
+        /// Название отдела 
+        /// </summary>
         private string Name { get; set; }
+        /// <summary>
+        /// Время создания отдела  
+        /// </summary>
         private DateTime RegDate { get; set; }
+        /// <summary>
+        /// Список сотрудников отдела   
+        /// </summary>
         private List<Works> Works { get; set; }
         #endregion
 
