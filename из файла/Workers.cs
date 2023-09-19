@@ -169,12 +169,12 @@ namespace из_файла
         /// <returns>список работников отдела depName </returns>
         public List<Works> DepsList(string depName)
         {
-            List<Works> tempWorkers = new List<Works>();
-            for (int i = 0; i < workrs.Count; i++)
+            List<Works> tempWorkers = new List<Works>(); // создается временный список работников
+            for (int i = 0; i < workrs.Count; i++)  // цикл проходит по основному списку
             {
-                if (workrs[i].WorkDept == depName) { tempWorkers.Add(workrs[i]); }
+                if (workrs[i].WorkDept == depName) { tempWorkers.Add(workrs[i]); } //  выбирает тех у кого имя отдела совпадает с заданым
             }
-            return tempWorkers;
+            return tempWorkers; складывает во времееный лист и возвращает его в свойство отдела
         }
         /// <summary>
         /// метод печатующий заголовки 
