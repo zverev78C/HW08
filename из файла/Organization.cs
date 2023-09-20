@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -350,14 +351,24 @@ namespace из_файла
         /// <param name="file">расположение файла</param>
         public void SaveXml(string file)
         {
-        
+        using (StreamWriter sw = new StreamWriter(file,false))
+            {
+
+            }
         }
 
-        public void LoadXml() { }
+        public void LoadXml(string file) { }
 
-        public void SaveJson () { }
+        
+        public void SaveJson (string file) 
+        {
+            using (StreamWriter sw = new StreamWriter(file, false))
+            {
 
-        public void LoadJson () { }
+            }
+        }
+
+        public void LoadJson (string file) { }
 
         #endregion
 
