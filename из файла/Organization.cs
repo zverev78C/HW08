@@ -357,7 +357,13 @@ namespace из_файла
             }
         }
 
-        public void LoadXml(string file) { }
+        public void LoadXml(string file)
+        {
+            using (StreamReader sr = new StreamReader(file))
+            {
+
+            }
+        }
 
         
         public void SaveJson (string file) 
@@ -368,7 +374,13 @@ namespace из_файла
             }
         }
 
-        public void LoadJson (string file) { }
+        public void LoadJson (string file) 
+        {
+            using (StreamReader sr = new StreamReader(file))
+            {
+
+            }
+        }
 
         #endregion
 
