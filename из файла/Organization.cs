@@ -196,8 +196,6 @@ namespace из_файла
 
         #endregion
 
-
-
         #region Методы для работы с сотрудниками  
 
         /// <summary>
@@ -343,6 +341,24 @@ namespace из_файла
                 ChangeDepsWorkerDel(depName); // удаление сотрудника из списка отдела
             }
         }
+        #endregion
+
+        #region Методы для работы с файлами  
+        /// <summary>
+        /// Метод для записи БД в формате Xml
+        /// </summary>
+        /// <param name="file">расположение файла</param>
+        public void SaveXml(string file)
+        {
+        
+        }
+
+        public void LoadXml() { }
+
+        public void SaveJson () { }
+
+        public void LoadJson () { }
+
         #endregion
 
         #region Тестовые методы 
