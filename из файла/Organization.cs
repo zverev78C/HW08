@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace из_файла
@@ -357,16 +358,58 @@ namespace из_файла
         using (StreamWriter sw = new StreamWriter(file,false))
             {
                 srd.Serialize(sw, d);
-                srw.Serialize(sw, w);
+                //srw.Serialize(sw, w);
             }
         }
 
         public void LoadXml(string file)
         {
+            List<Department> ld = new List<Department>();
+            //List<Worker> lw = new List<Worker>();
+            XmlSerializer srd = new XmlSerializer (typeof(List<Department>));
+           //XmlSerializer srw = new XmlSerializer (typeof(List<Worker>));
+            //string xml = "";
+
             using (StreamReader sr = new StreamReader(file))
             {
-
+                ld = srd.Deserialize(sr) as List<Department>;
+                //lw = srw.Deserialize(sr) as List<Worker>;
+                //xml = sr.ReadToEnd();
             }
+
+            //var colDeps = XDocument.Parse(xml)
+            //                      .Descendants("ArrayOfDepartmen")
+            //                      .Descendants("Department")
+            //                      .Descendants("Name")
+            //                      .Descendants("RegDate")
+            //                      .Descendants("Workers")
+            //                      .Descendants("Worker")
+            //                      .Descendants("WorkID")
+            //                      .Descendants("FisrtName")
+            //                      .Descendants("LastName")
+            //                      .Descendants("Age")
+            //                      .Descendants("WorkDept")
+            //                      .Descendants("Solary")
+            //                      .Descendants("CountProject");
+
+            /*
+            //var colWork = XDocument.Parse(xml)
+            //                       .Descendants("ArrayOfWorker")
+            //                       .Descendants("Worker")
+            //                       .Descendants("WorkID")
+            //                       .Descendants("FisrtName")
+            //                       .Descendants("LastName")
+            //                       .Descendants("Age")
+            //                       .Descendants("WorkDept")
+            //                       .Descendants("Solary")
+            //                       .Descendants("CountProject");
+            */
+
+            //foreach (var item in colDeps)
+            //{
+
+            //    Console.WriteLine($"\n\n{item}");
+            //}
         }
 
         
