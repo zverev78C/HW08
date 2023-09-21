@@ -9,7 +9,7 @@ namespace из_файла
     /// <summary>
     /// Структура описывающий отдел 
     /// </summary>
-    class Department
+    public class Department
     {
         #region свойства 
 
@@ -36,6 +36,11 @@ namespace из_файла
             RegDate = date;
             Workers = list;
         }
+
+        public Department()
+        {
+        }
+
 
         #endregion
 

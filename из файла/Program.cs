@@ -210,7 +210,7 @@ namespace из_файла
                             {
                                 case "1": //печать списка отделов
                                     {
-                                        Org.SaveXml(filePath);
+                                        Org.SaveXml(filePath, Org.Deps);
                                         break;
                                     } //печать списка отделов
                                 case "2": //Создания нового отдела

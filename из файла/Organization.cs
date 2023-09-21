@@ -16,7 +16,7 @@ namespace из_файла
         /// <summary>
         /// Список отделов  
         /// </summary>
-        List<Department> Deps = new List<Department>();
+        public List<Department> Deps = new List<Department>();
 
         /// <summary>
         /// Основной список всех сотрудников  
@@ -350,12 +350,12 @@ namespace из_файла
         /// Метод для записи БД в формате Xml
         /// </summary>
         /// <param name="file">расположение файла</param>
-        public void SaveXml(string file)
+        public void SaveXml(string file, List<Department> obj)
         {
             XmlSerializer sr = new XmlSerializer(typeof(List<Department>));
         using (StreamWriter sw = new StreamWriter(file,false))
             {
-                sr.Serialize(sw, Deps);
+                sr.Serialize(sw, obj);
             }
         }
 

@@ -6,7 +6,7 @@ namespace из_файла
     /// <summary>
     /// Структура описывающий сотрудника
     /// </summary>
-    class Worker
+    public class Worker
     {
         #region свойства 
 
@@ -52,6 +52,11 @@ namespace из_файла
             WorkDept = workDept;
             Solary = solary;
             CountProject = countProject;
+        }
+
+        public Worker()
+        {
+          
         }
         #endregion
 
