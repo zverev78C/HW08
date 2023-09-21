@@ -215,7 +215,7 @@ namespace из_файла
                                     } //печать списка отделов
                                 case "2": //Создания нового отдела
                                     {
-                                        Org.LoadXml(filePath);
+                                        Org.Deps = Org.LoadXml(filePath);
                                         break;
                                     } //Создания нового отдела
                                 case "3":  //редактирование отдела

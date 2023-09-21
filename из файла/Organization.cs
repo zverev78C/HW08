@@ -362,54 +362,17 @@ namespace из_файла
             }
         }
 
-        public void LoadXml(string file)
+        public List<Department> LoadXml(string file)
         {
             List<Department> ld = new List<Department>();
-            //List<Worker> lw = new List<Worker>();
             XmlSerializer srd = new XmlSerializer (typeof(List<Department>));
-           //XmlSerializer srw = new XmlSerializer (typeof(List<Worker>));
-            //string xml = "";
-
             using (StreamReader sr = new StreamReader(file))
             {
                 ld = srd.Deserialize(sr) as List<Department>;
-                //lw = srw.Deserialize(sr) as List<Worker>;
-                //xml = sr.ReadToEnd();
             }
 
-            //var colDeps = XDocument.Parse(xml)
-            //                      .Descendants("ArrayOfDepartmen")
-            //                      .Descendants("Department")
-            //                      .Descendants("Name")
-            //                      .Descendants("RegDate")
-            //                      .Descendants("Workers")
-            //                      .Descendants("Worker")
-            //                      .Descendants("WorkID")
-            //                      .Descendants("FisrtName")
-            //                      .Descendants("LastName")
-            //                      .Descendants("Age")
-            //                      .Descendants("WorkDept")
-            //                      .Descendants("Solary")
-            //                      .Descendants("CountProject");
-
-            /*
-            //var colWork = XDocument.Parse(xml)
-            //                       .Descendants("ArrayOfWorker")
-            //                       .Descendants("Worker")
-            //                       .Descendants("WorkID")
-            //                       .Descendants("FisrtName")
-            //                       .Descendants("LastName")
-            //                       .Descendants("Age")
-            //                       .Descendants("WorkDept")
-            //                       .Descendants("Solary")
-            //                       .Descendants("CountProject");
-            */
-
-            //foreach (var item in colDeps)
-            //{
-
-            //    Console.WriteLine($"\n\n{item}");
-            //}
+            return ld;
+            
         }
 
         
