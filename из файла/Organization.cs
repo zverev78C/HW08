@@ -355,28 +355,32 @@ namespace из_файла
         {
             XmlSerializer srd = new XmlSerializer(typeof(List<Department>));
             XmlSerializer srw = new XmlSerializer(typeof(List<Worker>));
-        using (StreamWriter sw = new StreamWriter(file,false))
+            using (StreamWriter sw = new StreamWriter(file, false))
             {
                 srd.Serialize(sw, d);
                 //srw.Serialize(sw, w);
             }
         }
 
-        public List<Department> LoadXml(string file)
+        public void LoadXml(string file)
         {
             List<Department> ld = new List<Department>();
-            XmlSerializer srd = new XmlSerializer (typeof(List<Department>));
+            XmlSerializer srd = new XmlSerializer(typeof(List<Department>));
             using (StreamReader sr = new StreamReader(file))
             {
                 ld = srd.Deserialize(sr) as List<Department>;
             }
+            Deps = ld;
 
-            return ld;
-            
+            foreach (var item in Deps)
+            {
+                Workers.AddRange(item.Workers);
+            }
+
+            Workers.Sort((x, y) => x.WorkID.CompareTo(y.WorkID));
         }
 
-        
-        public void SaveJson (string file) 
+        public void SaveJson(string file)
         {
             using (StreamWriter sw = new StreamWriter(file, false))
             {
@@ -384,7 +388,7 @@ namespace из_файла
             }
         }
 
-        public void LoadJson (string file) 
+        public void LoadJson(string file)
         {
             using (StreamReader sr = new StreamReader(file))
             {
