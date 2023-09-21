@@ -104,6 +104,7 @@ namespace из_файла
         {
             bool flag = true;
             var Org = new Organization();
+            string filePath = "list.xml";
 
             while (flag)
             {
@@ -196,7 +197,42 @@ namespace из_файла
                             break;
                         }// работа с отделами
 
-                    case "3": break;  // работа с Файлами
+                    case "3":
+                        {
+                            Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
+                                              "1\tДля сохранения Xml\n" +
+                                              "2\tДля Создания нового отдела\n" +
+                                              "3\tДля Редактирования отдела\n" +
+                                              "4\tДля Удаления отдела\n" +
+                                              "5\tДля выхода из меню"
+                                              );
+                            switch (MyMetods.InputCheck(true, false))
+                            {
+                                case "1": //печать списка отделов
+                                    {
+                                        Org.SaveXml(filePath);
+                                        break;
+                                    } //печать списка отделов
+                                case "2": //Создания нового отдела
+                                    {
+                                        Org.NewDepartment();
+                                        break;
+                                    } //Создания нового отдела
+                                case "3":  //редактирование отдела
+                                    {
+                                        Org.EditDept();
+                                        break;
+                                    } //редактирование отдела
+                                case "4":  //удаление отдела
+                                    {
+                                        Org.DeleteDept();
+                                        break;
+                                    } //удаление отдела
+                                case "5": { break; }
+                                default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
+                            }
+                            break;
+                        }   // работа с Файлами
 
                     case "4": flag = false; break; // выход из программы 
 

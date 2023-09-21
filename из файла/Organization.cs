@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace из_файла
 {
@@ -351,9 +352,10 @@ namespace из_файла
         /// <param name="file">расположение файла</param>
         public void SaveXml(string file)
         {
+            XmlSerializer sr = new XmlSerializer(typeof(List<Department>));
         using (StreamWriter sw = new StreamWriter(file,false))
             {
-
+                sr.Serialize(sw, Deps);
             }
         }
 
