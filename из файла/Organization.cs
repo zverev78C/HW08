@@ -347,6 +347,7 @@ namespace из_файла
         #endregion
 
         #region Методы для работы с файлами  
+
         /// <summary>
         /// Метод для записи БД в формате Xml
         /// </summary>
@@ -362,17 +363,19 @@ namespace из_файла
             }
         }
 
+        /// <summary>
+        /// Метод загружающий список отделов (Deps) , копирующий список сотрудников в список Workers и сортирующий последний по ID  
+        /// </summary>
+        /// <param name="file">Место харнения файла</param>
         public void LoadXml(string file)
         {
-            List<Department> ld = new List<Department>();
-            XmlSerializer srd = new XmlSerializer(typeof(List<Department>));
-            using (StreamReader sr = new StreamReader(file))
+            XmlSerializer srd = new XmlSerializer(typeof(List<Department>)); 
+            using (StreamReader sr = new StreamReader(file)) // создается поток считывания
             {
-                ld = srd.Deserialize(sr) as List<Department>;
+                Deps = srd.Deserialize(sr) as List<Department>; // считывается файл в список отделов
             }
-            Deps = ld;
 
-            foreach (var item in Deps)
+            foreach (var item in Deps) 
             {
                 Workers.AddRange(item.Workers);
             }
