@@ -206,11 +206,11 @@ namespace из_файла
                                               "4\tДля Удаления отдела\n" +
                                               "5\tДля выхода из меню"
                                               );
-                            switch (MyMetods.InputCheck(true, false))
+                            switch (MyMetods.InputCheck(true, true))
                             {
                                 case "1": //печать списка отделов
                                     {
-                                        Org.SaveXml(filePath, Org.Deps);
+                                        Org.SaveXml(filePath, Org.Deps, Org.Workers);
                                         break;
                                     } //печать списка отделов
                                 case "2": //Создания нового отдела

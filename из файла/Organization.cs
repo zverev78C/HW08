@@ -21,7 +21,7 @@ namespace из_файла
         /// <summary>
         /// Основной список всех сотрудников  
         /// </summary>
-        List<Worker> Workers = new List<Worker>();
+        public List<Worker> Workers = new List<Worker>();
 
 
         #region Методы для работы с отделами  
@@ -350,12 +350,14 @@ namespace из_файла
         /// Метод для записи БД в формате Xml
         /// </summary>
         /// <param name="file">расположение файла</param>
-        public void SaveXml(string file, List<Department> obj)
+        public void SaveXml(string file, List<Department> d, List<Worker> w)
         {
-            XmlSerializer sr = new XmlSerializer(typeof(List<Department>));
+            XmlSerializer srd = new XmlSerializer(typeof(List<Department>));
+            XmlSerializer srw = new XmlSerializer(typeof(List<Worker>));
         using (StreamWriter sw = new StreamWriter(file,false))
             {
-                sr.Serialize(sw, obj);
+                srd.Serialize(sw, d);
+                srw.Serialize(sw, w);
             }
         }
 
