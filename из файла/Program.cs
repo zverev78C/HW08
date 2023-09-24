@@ -104,7 +104,8 @@ namespace из_файла
         {
             bool flag = true;
             var Org = new Organization();
-            string filePath = "list.xml";
+            string filePathXml = "list.xml";
+            string filePathJson = "list.json";
 
             while (flag)
             {
@@ -137,24 +138,29 @@ namespace из_файла
                                     {
                                         Org.PrintAllWorkers();
                                         break;
-                                    }  // Просмотр всех сотрудников 
+                                    }   // Просмотр всех сотрудников 
                                 case "2": //Создания нового сотрудника
                                     {
                                         Org.AddWorkers();
                                         break;
-                                    } //Создания нового сотрудника
+                                    }   //Создания нового сотрудника
                                 case "3": //Редактирования сотрудника
                                     {
                                         Org.EditWorker();
                                         break;
-                                    } //Редактирования сотрудника
+                                    }   //Редактирования сотрудника
                                 case "4": //Удаления сотрудника
                                     {
                                         Org.DeleteWorker();
                                         break;
-                                    } //Удаления сотрудника
+                                    }   //Удаления сотрудника
+                                case "5": //Сортировка сотрудников
+                                    {
+                                        Org.DeleteWorker();
+                                        break;
+                                    }   //Сортировка сотрудников         
                                 case "6": { break; }
-                                default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); continue;
+                                default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
                             }
                             break;
                         }// Работа с сотрудниками
@@ -194,7 +200,7 @@ namespace из_файла
                                 default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
                             }
                             break;
-                        }// работа с отделами
+                        }   // работа с отделами
                     case "3": // работа с файлами 
                         {
                             Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
@@ -208,22 +214,22 @@ namespace из_файла
                             {
                                 case "1": //сохранения Xml
                                     {
-                                        Org.SaveXml(filePath, Org.Deps);
+                                        Org.SaveXml(filePathXml, Org.Deps);
                                         break;
                                     } //сохранения Xml
                                 case "2": //Чтения Xml
                                     {
-                                        Org.LoadXml(filePath);
+                                        Org.LoadXml(filePathXml);
                                         break;
                                     } //Чтения Xml
                                 case "3":  //редактирование отдела
                                     {
-                                        Org.EditDept();
+                                        Org.SaveJson(filePathJson);
                                         break;
                                     } //редактирование отдела
                                 case "4":  //удаление отдела
                                     {
-                                        Org.DeleteDept();
+                                        Org.LoadJson(filePathJson);
                                         break;
                                     } //удаление отдела
                                 case "5": { break; }
@@ -272,6 +278,5 @@ namespace из_файла
                 Org.PrintAllWorkers();
             }
         }
-
     }
 }

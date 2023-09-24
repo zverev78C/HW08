@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace из_файла
 {
@@ -23,7 +24,6 @@ namespace из_файла
         /// Основной список всех сотрудников  
         /// </summary>
         public List<Worker> Workers = new List<Worker>();
-
 
         #region Методы для работы с отделами  
 
@@ -346,6 +346,13 @@ namespace из_файла
         }
         #endregion
 
+        /// <summary>
+        /// Метод сортирующий сотрудников по парамметрам  
+        /// </summary>
+        public void SortWorkers ()
+        {
+
+        }
         #region Методы для работы с файлами  
 
         /// <summary>
@@ -384,9 +391,15 @@ namespace из_файла
 
         public void SaveJson(string file)
         {
+            string json = JsonConvert.SerializeObject(Workers);
+            //for (int i = 0; i < Workers.Count; i++)
+            //{
+            //    json += JsonConvert.SerializeObject (Workers);
+
+            //}
             using (StreamWriter sw = new StreamWriter(file, false))
             {
-
+                sw.Write(json);
             }
         }
 
