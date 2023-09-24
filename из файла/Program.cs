@@ -158,7 +158,6 @@ namespace из_файла
                             }
                             break;
                         }// Работа с сотрудниками
-
                     case "2":// работа с отделами
                         {
                             Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
@@ -196,28 +195,27 @@ namespace из_файла
                             }
                             break;
                         }// работа с отделами
-
-                    case "3":
+                    case "3": // работа с файлами 
                         {
                             Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
                                               "1\tДля сохранения Xml\n" +
                                               "2\tДля Чтения Xml\n" +
-                                              "3\tДля Редактирования отдела\n" +
-                                              "4\tДля Удаления отдела\n" +
+                                              "3\tДля сохранения JSON\n" +
+                                              "4\tДля Чтения JSON\n" +
                                               "5\tДля выхода из меню"
                                               );
                             switch (MyMetods.InputCheck(true, true))
                             {
-                                case "1": //печать списка отделов
+                                case "1": //сохранения Xml
                                     {
-                                        Org.SaveXml(filePath, Org.Deps, Org.Workers);
+                                        Org.SaveXml(filePath, Org.Deps);
                                         break;
-                                    } //печать списка отделов
-                                case "2": //Создания нового отдела
+                                    } //сохранения Xml
+                                case "2": //Чтения Xml
                                     {
                                         Org.LoadXml(filePath);
                                         break;
-                                    } //Создания нового отдела
+                                    } //Чтения Xml
                                 case "3":  //редактирование отдела
                                     {
                                         Org.EditDept();
@@ -233,9 +231,7 @@ namespace из_файла
                             }
                             break;
                         }   // работа с Файлами
-
                     case "4": flag = false; break; // выход из программы 
-
                     default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
                 }
             }
@@ -261,7 +257,12 @@ namespace из_файла
 
                 for (int i = 1; i <= testWokers; i++)
                 {
-                    Org.AddWorkersTest($"Вася_{i}", $"Пупкин_{i}", rnd.Next(20, 63), $"Отдел {rnd.Next(1, testDept + 1)}", rnd.Next(30000, 100000), rnd.Next(0, 5));
+                    Org.AddWorkersTest($"Вася_{i}", 
+                                       $"Пупкин_{i}", 
+                                       rnd.Next(20, 63), 
+                                       $"Отдел {rnd.Next(1, testDept + 1)}", 
+                                       rnd.Next(30000, 100000), 
+                                       rnd.Next(0, 5));
                 }
 
                 Console.WriteLine($"\nСоздано {testDept} Отделов\n");

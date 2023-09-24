@@ -352,10 +352,9 @@ namespace из_файла
         /// Метод для записи БД в формате Xml
         /// </summary>
         /// <param name="file">расположение файла</param>
-        public void SaveXml(string file, List<Department> d, List<Worker> w)
+        public void SaveXml(string file, List<Department> d)
         {
             XmlSerializer srd = new XmlSerializer(typeof(List<Department>));
-            XmlSerializer srw = new XmlSerializer(typeof(List<Worker>));
             using (StreamWriter sw = new StreamWriter(file, false))
             {
                 srd.Serialize(sw, d);
@@ -377,10 +376,10 @@ namespace из_файла
 
             foreach (var item in Deps) 
             {
-                Workers.AddRange(item.Workers);
+                Workers.AddRange(item.Workers); // Добавляет список струдников отдела в общий список сотрудников  
             }
 
-            Workers.Sort((x, y) => x.WorkID.CompareTo(y.WorkID));
+            Workers.Sort((x, y) => x.WorkID.CompareTo(y.WorkID)); // сортирует список сотрудников по ID
         }
 
         public void SaveJson(string file)
