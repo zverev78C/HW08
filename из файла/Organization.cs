@@ -353,6 +353,7 @@ namespace из_файла
         {
 
         }
+
         #region Методы для работы с файлами  
 
         /// <summary>
@@ -402,6 +403,11 @@ namespace из_файла
             }
         }
 
+
+        /// <summary>
+        /// Метод считывающий файл json и создающий два списка сначала Deps потом Workers   
+        /// </summary>
+        /// <param name="file"></param>
         public void LoadJson(string file)
         {
             using (StreamReader sr = new StreamReader(file))
