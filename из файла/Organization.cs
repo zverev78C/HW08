@@ -351,7 +351,43 @@ namespace из_файла
         /// </summary>
         public void SortWorkers ()
         {
+            Console.WriteLine("Выберите способ сортировки сотрудников:\n" +
+                              "1\tДля сортировки по одному параметру\n" +
+                              "2\tДля сортировки по двам парамертрам\n" +
+                              "3\tДля сортировки по трем парматерам");
+            switch (MyMetods.InputCheck(true, false))
+            {
+                case "1": SortToOne(); break;
+                default: Console.WriteLine("Выбор не понятен"); break;
+            }
 
+
+
+
+            void SortToOne ()
+            {
+                Console.WriteLine("Выберите способ сортировки сотрудников:\n" +
+                              "1\tДля сортировки по ID\n" +
+                              "2\tДля сортировки по Имени\n" +
+                              "3\tДля сортировки по Фамилии\n" +
+                              "4\tДля сортировки по Возрасту\n" +
+                              "5\tДля сортировки по Отделам\n" +
+                              "6\tДля сортировки по Зарплате\n" +
+                              "7\tДля сортировки по Количеству проектов");
+
+                switch (MyMetods.InputCheck(true, false)) 
+                {
+                    case "1": Workers.Sort((x, y) => x.WorkID.CompareTo(y.WorkID)); PrintAllWorkers();  break; // сортирует список сотрудников по ID
+                    case "2": Workers.Sort((x, y) => x.FisrtName.CompareTo(y.FisrtName)); PrintAllWorkers(); break; // сортирует список сотрудников по имени
+                    case "3": Workers.Sort((x, y) => x.LastName.CompareTo(y.LastName)); PrintAllWorkers(); break; // сортирует список сотрудников по фамилии
+                    case "4": Workers.Sort((x, y) => x.Age.CompareTo(y.Age)); PrintAllWorkers(); break; // сортирует список сотрудников по возрасту
+                    case "5": Workers.Sort((x, y) => x.WorkDept.CompareTo(y.WorkDept)); PrintAllWorkers(); break; // сортирует список сотрудников по отделам
+                    case "6": Workers.Sort((x, y) => x.Solary.CompareTo(y.Solary)); PrintAllWorkers(); break; // сортирует список сотрудников по зарплате
+                    case "7": Workers.Sort((x, y) => x.CountProject.CompareTo(y.CountProject)); PrintAllWorkers(); break; // сортирует список сотрудников по количеству проектов
+                    default: Console.WriteLine("Выбор не понятен"); break;
+                }
+            }
+            
         }
 
         #region Методы для работы с файлами  
