@@ -389,14 +389,13 @@ namespace из_файла
             Workers.Sort((x, y) => x.WorkID.CompareTo(y.WorkID)); // сортирует список сотрудников по ID
         }
 
+        /// <summary>
+        /// Метод сериализует (сохраняет в файл) в Json список Deps  
+        /// </summary>
+        /// <param name="file"></param>
         public void SaveJson(string file)
         {
-            string json = JsonConvert.SerializeObject(Workers);
-            //for (int i = 0; i < Workers.Count; i++)
-            //{
-            //    json += JsonConvert.SerializeObject (Workers);
-
-            //}
+            string json = JsonConvert.SerializeObject(Deps);
             using (StreamWriter sw = new StreamWriter(file, false))
             {
                 sw.Write(json);
@@ -407,8 +406,14 @@ namespace из_файла
         {
             using (StreamReader sr = new StreamReader(file))
             {
-
+                Deps = JsonConvert.DeserializeObject<List<Department>>(sr.ReadToEnd());
             }
+            foreach (var item in Deps)
+            {
+                Workers.AddRange(item.Workers); // Добавляет список струдников отдела в общий список сотрудников  
+            }
+
+            Workers.Sort((x, y) => x.WorkID.CompareTo(y.WorkID)); // сортирует список сотрудников по ID
         }
 
         #endregion
