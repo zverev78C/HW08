@@ -383,16 +383,18 @@ namespace из_файла
                     default: Console.WriteLine("Выбор не понятен"); break;
                 }
             }
-
+            
             // метод сортировки по двум указанным параметрам  
             void SortToTwo()
             {
-
+                Workers.Sort((x, y) => { int ret = String.Compare(x.LastName, y.LastName);
+                    return ret != 0 ? ret : x.Age.CompareTo(y.Age);
+                });
             }
             // метод сортировки по отделам и еще двум параметрам
             void SotrToDepsPlus ()
             {
-
+                
             }
             
         }
