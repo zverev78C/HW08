@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 
@@ -358,12 +354,12 @@ namespace из_файла
             switch (MyMetods.InputCheck(true, false))
             {
                 case "1": SortToOne(); break;
+                case "2": SortToTwo(); break;
+                case "3": SotrToDepsPlus(); break;
                 default: Console.WriteLine("Выбор не понятен"); break;
             }
 
-
-
-
+            // метод сортировки по одному параметру 
             void SortToOne ()
             {
                 Console.WriteLine("Выберите способ сортировки сотрудников:\n" +
@@ -386,6 +382,17 @@ namespace из_файла
                     case "7": Workers.Sort((x, y) => x.CountProject.CompareTo(y.CountProject)); PrintAllWorkers(); break; // сортирует список сотрудников по количеству проектов
                     default: Console.WriteLine("Выбор не понятен"); break;
                 }
+            }
+
+            // метод сортировки по двум указанным параметрам  
+            void SortToTwo()
+            {
+
+            }
+            // метод сортировки по отделам и еще двум параметрам
+            void SotrToDepsPlus ()
+            {
+
             }
             
         }

@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace из_файла
 {
@@ -102,9 +94,9 @@ namespace из_файла
 
         static void Main()
         {
-            bool flag = true;
+            bool flag = true; // переменная для завершения цикла главного меню  
             var Org = new Organization();
-            string filePathXml = "list.xml";
+            string filePathXml = "list.xml";  // место хранения файла
             string filePathJson = "list.json";
 
             while (flag)
@@ -156,14 +148,14 @@ namespace из_файла
                                     }   //Удаления сотрудника
                                 case "5": //Сортировка сотрудников
                                     {
-                                        Org.DeleteWorker();
+                                        Org.SortWorkers();
                                         break;
                                     }   //Сортировка сотрудников         
                                 case "6": { break; }
                                 default: Console.WriteLine("Выбор не понятен попробуйте еще разю"); break;
                             }
                             break;
-                        }// Работа с сотрудниками
+                        }   // Работа с сотрудниками
                     case "2":// работа с отделами
                         {
                             Console.WriteLine("Для работы с системой выберите пункт меню:\n" +
