@@ -343,10 +343,12 @@ namespace из_файла
         }
         #endregion
 
+        #region  Методы сортировки сорудников  
+
         /// <summary>
         /// Метод сортирующий сотрудников по парамметрам  
         /// </summary>
-        public void SortWorkers ()
+        public void SortWorkers()
         {
             Console.WriteLine("Выберите способ сортировки сотрудников:\n" +
                               "1\tДля сортировки по одному параметру\n" +
@@ -361,7 +363,7 @@ namespace из_файла
             }
 
             // метод сортировки по одному параметру 
-            void SortToOne ()
+            void SortToOne()
             {
                 Console.WriteLine("Выберите способ сортировки сотрудников:\n" +
                               "1\tДля сортировки по ID\n" +
@@ -372,9 +374,9 @@ namespace из_файла
                               "6\tДля сортировки по Зарплате\n" +
                               "7\tДля сортировки по Количеству проектов");
 
-                switch (MyMetods.InputCheck(true, false)) 
+                switch (MyMetods.InputCheck(true, false))
                 {
-                    case "1": Workers.Sort((x, y) => x.WorkID.CompareTo(y.WorkID)); PrintAllWorkers();  break; // сортирует список сотрудников по ID
+                    case "1": Workers.Sort((x, y) => x.WorkID.CompareTo(y.WorkID)); PrintAllWorkers(); break; // сортирует список сотрудников по ID
                     case "2": Workers.Sort((x, y) => x.FisrtName.CompareTo(y.FisrtName)); PrintAllWorkers(); break; // сортирует список сотрудников по имени
                     case "3": Workers.Sort((x, y) => x.LastName.CompareTo(y.LastName)); PrintAllWorkers(); break; // сортирует список сотрудников по фамилии
                     case "4": Workers.Sort((x, y) => x.Age.CompareTo(y.Age)); PrintAllWorkers(); break; // сортирует список сотрудников по возрасту
@@ -403,14 +405,28 @@ namespace из_файла
                 }
             }
 
-                // метод сортировки по отделам и еще двум параметрам
-                //Упорядочивание по полям возраст и оплате труда в рамках одного департамента
-                void SotrToDepsPlus ()
+            // метод сортировки по отделам и еще двум параметрам
+            //Упорядочивание по полям возраст и оплате труда в рамках одного департамента
+            void SotrToDepsPlus()
             {
-                
+                var sortedWorkers = Workers.OrderBy(w => w.WorkDept).ThenBy(w => w.Age).ThenBy(w => w.Solary);
+                Worker.PrintTitle();
+                foreach (var wor in sortedWorkers)
+                {
+                    Console.WriteLine($"{wor.WorkID}\t\t" +
+                                      $"{wor.FisrtName}\t\t" +
+                                      $"{wor.LastName}\t\t" +
+                                      $"{wor.Age}\t " +
+                                      $"{wor.WorkDept}\t\t" +
+                                      $"{wor.Solary}\t\t" +
+                                      $"{wor.CountProject}");
+                }
+
             }
-            
+
         }
+
+        #endregion
 
         #region Методы для работы с файлами  
 
@@ -434,13 +450,13 @@ namespace из_файла
         /// <param name="file">Место харнения файла</param>
         public void LoadXml(string file)
         {
-            XmlSerializer srd = new XmlSerializer(typeof(List<Department>)); 
+            XmlSerializer srd = new XmlSerializer(typeof(List<Department>));
             using (StreamReader sr = new StreamReader(file)) // создается поток считывания
             {
                 Deps = srd.Deserialize(sr) as List<Department>; // считывается файл в список отделов
             }
 
-            foreach (var item in Deps) 
+            foreach (var item in Deps)
             {
                 Workers.AddRange(item.Workers); // Добавляет список струдников отдела в общий список сотрудников  
             }
