@@ -376,13 +376,13 @@ namespace из_файла
 
                 switch (MyMetods.InputCheck(true, false))
                 {
-                    case "1": Workers.Sort((x, y) => x.WorkID.CompareTo(y.WorkID)); PrintAllWorkers(); break; // сортирует список сотрудников по ID
-                    case "2": Workers.Sort((x, y) => x.FisrtName.CompareTo(y.FisrtName)); PrintAllWorkers(); break; // сортирует список сотрудников по имени
-                    case "3": Workers.Sort((x, y) => x.LastName.CompareTo(y.LastName)); PrintAllWorkers(); break; // сортирует список сотрудников по фамилии
-                    case "4": Workers.Sort((x, y) => x.Age.CompareTo(y.Age)); PrintAllWorkers(); break; // сортирует список сотрудников по возрасту
-                    case "5": Workers.Sort((x, y) => x.WorkDept.CompareTo(y.WorkDept)); PrintAllWorkers(); break; // сортирует список сотрудников по отделам
-                    case "6": Workers.Sort((x, y) => x.Solary.CompareTo(y.Solary)); PrintAllWorkers(); break; // сортирует список сотрудников по зарплате
-                    case "7": Workers.Sort((x, y) => x.CountProject.CompareTo(y.CountProject)); PrintAllWorkers(); break; // сортирует список сотрудников по количеству проектов
+                    case "1": var sortedWorkers = Workers.OrderBy(w => w.WorkID); PrintResultSort(sortedWorkers); break; // сортирует список сотрудников по ID
+                    case "2": var sortedWorkersF = Workers.OrderBy(w => w.FisrtName); PrintResultSort(sortedWorkersF); break; // сортирует список сотрудников по имени
+                    case "3": var sortedWorkersL = Workers.OrderBy(w => w.LastName); PrintResultSort(sortedWorkersL); break; // сортирует список сотрудников по фамилии
+                    case "4": var sortedWorkersA = Workers.OrderBy(w => w.Age); PrintResultSort(sortedWorkersA); break; // сортирует список сотрудников по возрасту
+                    case "5": var sortedWorkersD = Workers.OrderBy(w => w.WorkDept); PrintResultSort(sortedWorkersD); break; // сортирует список сотрудников по отделам
+                    case "6": var sortedWorkersS = Workers.OrderBy(w => w.Solary); PrintResultSort(sortedWorkersS); break; // сортирует список сотрудников по зарплате
+                    case "7": var sortedWorkersC = Workers.OrderBy(w => w.CountProject); PrintResultSort(sortedWorkersC); break; // сортирует список сотрудников по количеству проектов
                     default: Console.WriteLine("Выбор не понятен"); break;
                 }
             }
@@ -392,17 +392,7 @@ namespace из_файла
             void SortToTwo()
             {
                 var sortedWorkers = Workers.OrderBy(w => w.Age).ThenBy(w => w.Solary);
-                Worker.PrintTitle();
-                foreach (var wor in sortedWorkers)
-                {
-                    Console.WriteLine($"{wor.WorkID}\t\t" +
-                                      $"{wor.FisrtName}\t\t" +
-                                      $"{wor.LastName}\t\t" +
-                                      $"{wor.Age}\t " +
-                                      $"{wor.WorkDept}\t\t" +
-                                      $"{wor.Solary}\t\t" +
-                                      $"{wor.CountProject}");
-                }
+                PrintResultSort(sortedWorkers);
             }
 
             // метод сортировки по отделам и еще двум параметрам
@@ -410,20 +400,26 @@ namespace из_файла
             void SotrToDepsPlus()
             {
                 var sortedWorkers = Workers.OrderBy(w => w.WorkDept).ThenBy(w => w.Age).ThenBy(w => w.Solary);
-                Worker.PrintTitle();
-                foreach (var wor in sortedWorkers)
-                {
-                    Console.WriteLine($"{wor.WorkID}\t\t" +
-                                      $"{wor.FisrtName}\t\t" +
-                                      $"{wor.LastName}\t\t" +
-                                      $"{wor.Age}\t " +
-                                      $"{wor.WorkDept}\t\t" +
-                                      $"{wor.Solary}\t\t" +
-                                      $"{wor.CountProject}");
-                }
-
+                PrintResultSort(sortedWorkers);
             }
-
+        }
+        /// <summary>
+        /// Метод вывода в консоль отсортированого списка сотрудников
+        /// </summary>
+        /// <param name="sortedWorkers"></param>
+        void PrintResultSort(IOrderedEnumerable<Worker> sortedWorkers)
+        {
+            Worker.PrintTitle();
+            foreach (var wor in sortedWorkers)
+            {
+                Console.WriteLine($"{wor.WorkID}\t\t" +
+                                  $"{wor.FisrtName}\t\t" +
+                                  $"{wor.LastName}\t\t" +
+                                  $"{wor.Age}\t " +
+                                  $"{wor.WorkDept}\t\t" +
+                                  $"{wor.Solary}\t\t" +
+                                  $"{wor.CountProject}");
+            }
         }
 
         #endregion
