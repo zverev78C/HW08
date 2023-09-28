@@ -387,7 +387,9 @@ namespace из_файла
             // метод сортировки по двум указанным параметрам  
             void SortToTwo()
             {
-                Workers.Sort((x, y) => { int ret = String.Compare(x.LastName, y.LastName);
+                Workers.Sort((x, y) => 
+                {
+                    int ret = String.Compare(x.LastName, y.LastName);
                     return ret != 0 ? ret : x.Age.CompareTo(y.Age);
                 });
             }
