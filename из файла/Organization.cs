@@ -389,19 +389,23 @@ namespace из_файла
             //Упорядочивание по полям возраст и оплате труда
             void SortToTwo()
             {
-               var sortedWorkers = Workers.OrderBy( w =>  w.Age).ThenBy(w=>w.Solary);
-                foreach  (var worker in sortedWorkers)
-                { Console.WriteLine(String.Join( " ",worker.WorkID + " " +
-                    worker.FisrtName + " " +
-                    worker.LastName + " " +
-                    worker.Age + " " +
-                    worker.WorkDept + " " +
-                    worker.Solary + " " +
-                    worker.CountProject)); }
+                var sortedWorkers = Workers.OrderBy(w => w.Age).ThenBy(w => w.Solary);
+                Worker.PrintTitle();
+                foreach (var wor in sortedWorkers)
+                {
+                    Console.WriteLine($"{wor.WorkID}\t\t" +
+                                      $"{wor.FisrtName}\t\t" +
+                                      $"{wor.LastName}\t\t" +
+                                      $"{wor.Age}\t " +
+                                      $"{wor.WorkDept}\t\t" +
+                                      $"{wor.Solary}\t\t" +
+                                      $"{wor.CountProject}");
+                }
             }
-            // метод сортировки по отделам и еще двум параметрам
-            //Упорядочивание по полям возраст и оплате труда в рамках одного департамента
-            void SotrToDepsPlus ()
+
+                // метод сортировки по отделам и еще двум параметрам
+                //Упорядочивание по полям возраст и оплате труда в рамках одного департамента
+                void SotrToDepsPlus ()
             {
                 
             }
