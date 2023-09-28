@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 
@@ -383,17 +384,23 @@ namespace из_файла
                     default: Console.WriteLine("Выбор не понятен"); break;
                 }
             }
-            
+
             // метод сортировки по двум указанным параметрам  
+            //Упорядочивание по полям возраст и оплате труда
             void SortToTwo()
             {
-                Workers.Sort((x, y) => 
-                {
-                    int ret = String.Compare(x.LastName, y.LastName);
-                    return ret != 0 ? ret : x.Age.CompareTo(y.Age);
-                });
+               var sortedWorkers = Workers.OrderBy( w =>  w.Age).ThenBy(w=>w.Solary);
+                foreach  (var worker in sortedWorkers)
+                { Console.WriteLine(String.Join( " ",worker.WorkID + " " +
+                    worker.FisrtName + " " +
+                    worker.LastName + " " +
+                    worker.Age + " " +
+                    worker.WorkDept + " " +
+                    worker.Solary + " " +
+                    worker.CountProject)); }
             }
             // метод сортировки по отделам и еще двум параметрам
+            //Упорядочивание по полям возраст и оплате труда в рамках одного департамента
             void SotrToDepsPlus ()
             {
                 

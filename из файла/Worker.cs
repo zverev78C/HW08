@@ -72,27 +72,27 @@ namespace из_файла
 
     }
 
-    public class PersonComparer : IComparer<Worker>
-    {
-        public int Compare(Worker x, Worker y)
-        {
-            if (object.ReferenceEquals(x, y))
-            {
-                return 0;
-            }
+    //public class PersonComparer : IComparer<Worker>
+    //{
+    //    public int Compare(Worker x, Worker y)
+    //    {
+    //        if (object.ReferenceEquals(x, y))
+    //        {
+    //            return 0;
+    //        }
 
-            if (x == null)
-            {
-                return -1;
-            }
+    //        if (x == null)
+    //        {
+    //            return -1;
+    //        }
 
-            if (y == null)
-            {
-                return 1;
-            }
+    //        if (y == null)
+    //        {
+    //            return 1;
+    //        }
 
-            int ret = String.Compare(x.LastName, y.LastName);
-            return ret != 0 ? ret : x.Age.CompareTo(y.Age);
-        }
-    }
+    //        int ret = String.Compare(x.LastName, y.LastName);
+    //        return ret != 0 ? ret : x.Age.CompareTo(y.Age);
+    //    }
+    //}
 }
